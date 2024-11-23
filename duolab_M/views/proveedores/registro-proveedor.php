@@ -1,3 +1,19 @@
+<style>
+      .bg-primary{
+        background: #0001FA !important;
+      }
+ </style>
+ <style>
+      .bg-danger{
+        background: #FE0002 !important;
+      }
+ </style>
+ <style>
+      .bg-warning{
+        background: #FEC409 !important;
+      }
+ </style>
+
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -19,7 +35,7 @@
                 <form id="FRM_INSERT_PROVEEDOR" method="post" action="<?php echo $functions->direct_sistema(); ?>/modules/proveedores/insert-update-proveedor.php" enctype="multipart/form-data">
                     <input type="hidden" name="proveedor_id" value="">
                     <div class="card card-primary">
-                        <div class="card-header">
+                        <div class="card-header bg-primary">
                             <div class="card-title">Datos de Empresa</div>
                             <div class="card-tools">
                                 <div class="float-left" style="height: 2rem; width: 170px">
@@ -110,7 +126,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="card card-info">
-                                <div class="card-header">
+                                <div class="card-header bg-warning">
                                     <div class="card-title">Contacto 1</div>
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Colapsar">
@@ -145,7 +161,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="card card-info">
-                                <div class="card-header">
+                                <div class="card-header bg-warning">
                                     <div class="card-title">Contacto 2</div>
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Colapsar">
@@ -183,7 +199,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="card card-danger">
-                                <div class="card-header">
+                                <div class="card-header bg-danger">
                                     <div class="card-title">Cuenta Bancaria 1</div>
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Colapsar">
@@ -213,7 +229,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="card card-danger">
-                                <div class="card-header">
+                                <div class="card-header bg-danger">
                                     <div class="card-title">Cuenta Bancaria 2</div>
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Colapsar">

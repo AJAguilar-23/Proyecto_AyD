@@ -1,3 +1,8 @@
+<style>
+      .bg-primary{
+        background: #0001FA !important;
+      }
+ </style>
 <div class="content-wrapper">
     <div class="content-header">
         <div class="container-fluid">
@@ -15,7 +20,7 @@
             <div style="max-width: 1140px;margin: 0 auto;">
                 <form id="FRM_INSERT_MOV" method="post" action="<?php echo $functions->direct_sistema(); ?>/modules/productos/insert-movimiento-stock.php" enctype="multipart/form-data">
                     <div class="card card-primary">
-                        <div class="card-header">
+                        <div class="card-header bg-primary">
                             <div class="card-title">Datos del movimiento de Stock</div>
                         </div>
                         <div class="card-body">
@@ -96,10 +101,10 @@
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <button id="btn-new" class="btn btn-primary">
+                            <button id="btn-new" class="btn btn-primary bg-primary">
                                 <i class="fa fa-broom fa-1x"></i>&nbsp;&nbsp;Limpiar campos
                             </button>
-                            <button id="btn-product-list" class="btn btn-secondary">
+                            <button id="btn-product-list" class="btn btn-secondary bg-black">
                                 <i class="fa fa-box fa-1x"></i>&nbsp;&nbsp;Listado de Productos
                             </button>
                             <div class="float-right">

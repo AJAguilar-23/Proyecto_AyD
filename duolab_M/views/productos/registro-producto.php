@@ -1,3 +1,8 @@
+<style>
+      .bg-primary{
+        background: #0001FA !important;
+      }
+ </style>
 <div class="content-wrapper">
     <div class="content-header">
         <div class="container-fluid">
@@ -16,7 +21,7 @@
                 <form id="FRM_INSERT_PRODUCTO" method="post" action="<?php echo $functions->direct_sistema(); ?>/modules/productos/insert-update-producto.php" enctype="multipart/form-data">
                     <input type="hidden" name="producto_id" id="">
                     <div class="card card-primary">
-                        <div class="card-header">
+                        <div class="card-header bg-primary">
                             <div class="card-title">Datos del Producto</div>
                             <div class="float-right" style="height: 2rem; width: 150px">
                                 <input type="text" class="form-control" placeholder="ID de producto" name="producto_codigo" readonly>
@@ -107,10 +112,10 @@
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <button id="btn-new" class="btn btn-primary">
+                            <button id="btn-new" class="btn btn-primary bg-primary">
                                 <i class="fa fa-broom fa-1x"></i>&nbsp;&nbsp;Limpiar campos
                             </button>
-                            <button id="btn-product-list" class="btn btn-secondary">
+                            <button id="btn-product-list" class="btn btn-secondary bg-black">
                                 <i class="fa fa-box fa-1x"></i>&nbsp;&nbsp;Listado de Productos
                             </button>
                             <div class="float-right">

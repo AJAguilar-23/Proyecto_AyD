@@ -1,3 +1,9 @@
+<style>
+      .bg-primary{
+        background: #0001FA !important;
+      }
+ </style>
+
 <div class="content-wrapper">
     <div class="content-header">
         <div class="container-fluid">
@@ -13,7 +19,7 @@
     <div class="content">
         <div class="container-fluid">
             <div class="card card-primary mt-1">
-                <div class="card-header">
+                <div class="card-header bg-primary">
                     Movimientos
                 </div>
                 <div class="card-body">

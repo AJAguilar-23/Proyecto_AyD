@@ -1,4 +1,9 @@
-<div class="content-wrapper">
+<style>
+      .bg-primary{
+        background: #0001FA !important;
+      }
+ </style>
+ <div class="content-wrapper">
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-0">
@@ -13,7 +18,7 @@
     <div class="content">
         <div class="container-fluid">
             <div class="card card-primary mt-1">
-                <div class="card-header">
+                <div class="card-header bg-primary">
                     Productos
                 </div>
                 <div class="card-body">

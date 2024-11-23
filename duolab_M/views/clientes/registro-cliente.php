@@ -1,3 +1,20 @@
+<style>
+      .bg-primary{
+        background: #0001FA !important;
+    }
+</style>
+
+<style>
+      .bg-danger{
+        background: #FE0002 !important;
+      }
+ </style>
+ <style>
+      .bg-warning{
+        background: #FEC409 !important;
+      }
+ </style>
+
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -6,7 +23,7 @@
             <div class="row mb-0">
                 <div class="col-md-12">
                     <div class="m-0 text-dark text-center text-lg">
-                        <i class="fas fa-user"></i>&nbsp;&nbsp;Registro de Cliente (Padrón Comercial)
+                        <i class="fas fa-user"></i>&nbsp;&nbsp;Registro de Cliente
                     </div>
                 </div>
             </div>
@@ -18,7 +35,7 @@
                 <form id="FRM_INSERT_CLIENTE" method="post" action="<?php echo $functions->direct_sistema(); ?>/modules/clientes/insert-update-cliente.php" enctype="multipart/form-data">
                     <input type="hidden" name="cliente_id">
                     <div class="card card-primary">
-                        <div class="card-header ">
+                        <div class="card-header bg-primary">
                             <div class="card-title">Datos de Cliente</div>
                             <div class="float-right" style="height: 2rem; width: 150px">
                                 <input type="text" placeholder="Código de cliente" class="form-control" name="cliente_codigo" readonly>
@@ -89,7 +106,7 @@
                         </div>
                     </div>
                     <div class="card card-danger">
-                        <div class="card-header">
+                        <div class="card-header bg-danger">
                             <div class="card-title">Otros datos</div>
                         </div>
                         <div class="card-body">
@@ -167,7 +184,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="card card-info">
-                                <div class="card-header">
+                                <div class="card-header bg-warning">
                                     <div class="card-title">Contacto 1</div>
                                 </div>
                                 <div class="card-body">
@@ -197,7 +214,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="card card-info">
-                                <div class="card-header">
+                                <div class="card-header bg-warning">
                                     <div class="card-title">Contacto 2</div>
                                 </div>
                                 <div class="card-body">
