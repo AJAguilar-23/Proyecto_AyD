@@ -1,4 +1,18 @@
-<div class="content-wrapper">
+<style>
+      .bg-primary{
+        background: #0001FA !important;
+      }
+ </style>
+ <style>
+      .bg-danger{
+        background: #FE0002 !important;
+      }
+ </style>
+ <style>
+      .bg-warning{
+        background: #FEC409 !important;
+      }
+ </style><div class="content-wrapper">
     <div class="content-header">
         <div class="container-fluid">
         	<div class="row mb-0">
@@ -21,18 +35,18 @@
 	                            <select class="select2 form-control" name="orden_listado" required></select>
 	                        </div>
 	                        <div class="col-md-4 float-left">
-	                            <button type="button" id="btn-select-orden" class="btn btn-primary">Seleccionar</button>
+	                            <button type="button" id="btn-select-orden" class="btn btn-primary bg-primary">Seleccionar</button>
 	                        </div>
 	                    </div>
 	                </div>
 	                <div id="col-btn-nuevacompra" class="col-md-6">
-                        <button type="button" id="btn-nuevacompra" class="btn btn-primary btn-block"><i class="fa fa-plus fa-1x"></i>&nbsp;&nbsp;<font>Nueva Compra</font></button>
+                        <button type="button" id="btn-nuevacompra" class="btn btn-primary btn-block bg-primary"><i class="fa fa-plus fa-1x"></i>&nbsp;&nbsp;<font>Nueva Compra</font></button>
                     </div>
 	            </div>
 	            <form id="FRM_INSERT_DETA_ORDCOMPRA" method="post" action="<?php echo $functions->direct_sistema(); ?>/modules/compras/insert-update-compra.php" enctype="multipart/form-data">
 	                <input type="hidden" name="orden_id">
 	                <div class="card card-primary">
-	                    <div class="card-header">
+	                    <div class="card-header bg-primary">
 	                    	<div class="row">
 	                    		<div class="col-md-3">
 	                    			<div class="card-title">Datos de Compra</div>
@@ -234,7 +248,7 @@
 	                </div>
 
 	                <div class="card card-info">
-	                    <div class="card-header">
+	                    <div class="card-header bg-warning">
 	                    	<div class="card-title"><i class="fas fa-people-carry"></i>&nbsp;&nbsp;Datos del Proveedor</div>
 	                    </div>
 	                    <div class="card-body">
@@ -265,7 +279,7 @@
 	                <div class="row">
 	                    <div class="col-sm-12">
 	                        <div class="card card-danger">
-	                            <div class="card-header">
+	                            <div class="card-header bg-danger">
 	                            	<div class="card-title"><i class="fas fa-box"></i>&nbsp;&nbsp;Datos del Artículo</div>
 	                            </div>
 	                            <div class="card-body">
@@ -340,7 +354,7 @@
 	                                    <input type="hidden" name="orden_stockprod">
 	                                </div>
 	                                <div class="mt-3">
-	                                    <button id="btn-add-prodtporden" class="btn btn-primary btn-block"><i class="fa fa-plus fa-1x"></i> Añadir Artículo</button>
+	                                    <button id="btn-add-prodtporden" class="btn btn-primary btn-block bg-primary"><i class="fa fa-plus fa-1x"></i> Añadir Artículo</button>
 	                                </div>
 	                            </div>
 	                        </div>

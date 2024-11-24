@@ -1,3 +1,18 @@
+<style>
+      .bg-primary{
+        background: #0001FA !important;
+      }
+ </style>
+ <style>
+      .bg-danger{
+        background: #FE0002 !important;
+      }
+ </style>
+ <style>
+      .bg-warning{
+        background: #FEC409 !important;
+      }
+ </style>
 <div class="content-wrapper">
     <div class="content-header">
         <div class="container-fluid">
@@ -29,19 +44,19 @@
                                             </div>
                                         </div>
                                         <div class="col-md-4">
-                                            <button type="button" id="btn-select-cotizacion" class="form-control btn btn-primary">Seleccionar</button>
+                                            <button type="button" id="btn-select-cotizacion" class="form-control btn btn-primary bg-primary">Seleccionar</button>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <button type="button" id="btn-nuevo" class="btn btn-primary btn-block"><i class="fa fa-plus fa-1x"></i>&nbsp;&nbsp;<font>Nuevo </font></button>
+                                    <button type="button" id="btn-nuevo" class="btn btn-primary btn-block bg-primary"><i class="fa fa-plus fa-1x"></i>&nbsp;&nbsp;<font>Nuevo </font></button>
                                 </div>
                                 
                             </div>
                         </div>
                     </div>
                     <div class="card card-primary">
-                        <div class="card-header">
+                        <div class="card-header bg-primary">
                             <div class="row">
                                 <div class="col-md-2">
                                     <div class="card-title">Datos de Cotización</div>
@@ -170,7 +185,7 @@
                         </div>
                     </div>
                     <div class="card card-danger">
-                        <div class="card-header">
+                        <div class="card-header bg-danger">
                             <div class="card-title">
                                 <i class="fas fa-box"></i>&nbsp;&nbsp;Productos
                             </div>
@@ -207,7 +222,7 @@
                             <input type="hidden" name="cotizacion_stockprod">
                             <div class="row mt-3">
                                 <div id="col-btn-add-prodtocotiz" class="col-md-12">
-                                    <button type="button" id="btn-add-prodtocotiz" class="btn btn-primary btn-block"><i class="fa fa-save fa-1x"></i>&nbsp;&nbsp;<font>Agregar artículo</font></button>
+                                    <button type="button" id="btn-add-prodtocotiz" class="btn btn-primary btn-block bg-primary"><i class="fa fa-save fa-1x"></i>&nbsp;&nbsp;<font>Agregar artículo</font></button>
                                 </div>
                             </div>
                         </div>

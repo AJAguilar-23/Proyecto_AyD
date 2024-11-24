@@ -1,3 +1,18 @@
+<style>
+      .bg-primary{
+        background: #0001FA !important;
+      }
+ </style>
+ <style>
+      .bg-danger{
+        background: #FE0002 !important;
+      }
+ </style>
+ <style>
+      .bg-warning{
+        background: #FEC409 !important;
+      }
+ </style>
 <div class="content-wrapper">
     <div class="content-header">
         <div class="container-fluid">
@@ -15,7 +30,7 @@
         <div class="container-fluid">
             <div style="max-width: 1140px; margin: 0 auto;">
                 <div class="card card-primary">
-                    <div class="card-header">
+                    <div class="card-header bg-primary">
                         <div class="row">
                             <!--
                             <div class="col-md-4">
@@ -36,7 +51,7 @@
                             <div class="col-md-4"></div>
                             <div class="col-md-4"></div>
                             <div class="col-md-4">
-                                <button id="btn-nuevo" js-type="" type="button" class="btn btn-success btn-block"><i class="fa fa-plus fa-1x"></i> Nueva Compra</button>
+                                <button id="btn-nuevo" js-type="" type="button" class="btn btn-warning btn-block bg-warning"><i class="fa fa-plus fa-1x"></i> Nueva Compra</button>
                             </div>
                         </div>
                     </div>
@@ -69,12 +84,12 @@
                         </div>
                         <div class="row">
                             <div class="col-md-4">
-                                <button id="btn-reset" class="btn btn-primary btn-block">
+                                <button id="btn-reset" class="btn btn-primary btn-block bg-primary">
                                     <i class="fa fa-broom fa-1x"></i>&nbsp;&nbsp;Limpiar filtros
                                 </button>
                             </div>
                             <div class="col-md-8">
-                                <button id="btn-buscar" class="btn btn-success btn-block" type="button">
+                                <button id="btn-buscar" class="btn btn-warning btn-block bg-warning" type="button">
                                    <i class="fa fa-search"></i>&nbsp;&nbsp;Buscar Compras
                                 </button>
                             </div>

@@ -1,3 +1,8 @@
+<style>
+      .bg-primary{
+        background: #0001FA !important;
+      }
+ </style>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -19,7 +24,7 @@
                 <form id="FRM_INSERT_EMPLEADO" method="post" action="<?php echo $functions->direct_sistema(); ?>/modules/empleados/insert-update-empleado.php" enctype="multipart/form-data">
                     <input type="hidden" name="empleado_id">
                     <div class="card card-primary">
-                        <div class="card-header">
+                        <div class="card-header bg-primary">
                             <div class="card-title">Datos de Empleado</div>
                             <div class="float-right" style="height: 2rem; width: 170px">
                                 <input type="text" placeholder="Código de empleado" class="form-control" name="empleado_codigo" readonly>

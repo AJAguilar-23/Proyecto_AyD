@@ -142,7 +142,7 @@
               </li>
             </ul>
           </li>
-
+<!--
           <li class="nav-item has-treeview menu-close">
             <a id="m_boleta" href="#" class="nav-link">
             <i class="nav-icon fas fa-file-invoice"></i>
@@ -190,9 +190,9 @@
               </li>
             </ul>
           </li>
-
+    -->
           <li class="nav-header">COMPRAS / SERVICIOS</li>
-
+<!--
           <li class="nav-item has-treeview menu-close">
             <a id="m_ordenes" href="#" class="nav-link">
               <i class="nav-icon fas fa-receipt"></i>
@@ -222,7 +222,7 @@
               </li>
             </ul>
           </li>
-
+    -->
           <li class="nav-item has-treeview menu-close">
             <a id="m_compras" href="#" class="nav-link">
               <i class="nav-icon fas fa-receipt"></i>

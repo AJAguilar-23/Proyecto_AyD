@@ -40,7 +40,7 @@
   <link rel="icon" href="<?php echo $functions->direct_sistema(); ?>/img/favicons/chemistry-32x32.png" sizes="32x32" type="image/png">
   <link rel="icon" href="<?php echo $functions->direct_sistema(); ?>/img/favicons/chemistry-16x16.png" sizes="16x16" type="image/png">
 
-  <!-- Reescibo el color del nav bar -->
+  <!-- Reescribo el color del nav bar -->
   <style>
       .navbar-dark{
         background: #0B1010 !important;
@@ -73,13 +73,14 @@
       <li class="nav-item d-none d-sm-inline-block">
         <a href="<?php echo $functions->direct_paginas()."facturacion/registro-factura" ?>" class="nav-link">Factura</a>
       </li>
+      <!--
       <li class="nav-item d-none d-sm-inline-block">
         <a href="<?php echo $functions->direct_paginas()."facturacion/registro-boleta" ?>" class="nav-link">Boleta</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="<?php echo $functions->direct_paginas()."facturacion/registro-nota-credito" ?>" class="nav-link">Nota de Crédito</a>
       </li>
-
+    -->
     </ul>
 
     <!-- Right navbar links -->

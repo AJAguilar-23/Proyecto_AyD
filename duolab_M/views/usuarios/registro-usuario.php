@@ -1,3 +1,20 @@
+<style>
+      .bg-primary{
+        background: #0001FA !important;
+      }
+</style>
+<style>
+      .bg-danger{
+        background: #FE0002 !important;
+      }
+</style>
+
+<style>
+      .bg-secondary{
+        background: #0B1010 !important;
+      }
+ </style>
+
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -19,7 +36,7 @@
                 <form id="FRM_INSERT_USUARIO" method="post" action="<?php echo $functions->direct_sistema(); ?>/modules/usuarios/insert-update-usuario.php" enctype="multipart/form-data">
                     <input type="hidden" name="usuario_id">
                     <div class="card card-primary">
-                        <div class="card-header">
+                        <div class="card-header bg-primary">
                             <div class="card-title">Datos de Usuario</div>
                             <div class="float-right" style="height: 2rem; width: 150px">
                                 <input type="text" placeholder="Código de usuario" class="form-control" name="usuario_codigo" readonly>
@@ -65,7 +82,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="card card-secondary" id="password-card">
-                                        <div class="card-header">
+                                        <div class="card-header bg-secondary">
                                             <div id="password-card-header" class="btn-block" data-card-widget="collapse" data-toggle="tooltip" title="Colapsar"><i class="fas fa-plus"></i>&nbsp;&nbsp;<font>Contraseña</font></div>
                                         </div>
                                         <div class="card-body">
@@ -108,7 +125,7 @@
                             <button type="submit" id="btn-save-user" class="btn btn-success btn-block"><i class="fa fa-save fa-1x"></i>&nbsp;&nbsp;<font>Crear Usuario</font></button>
                         </div>
                         <div id="col-btn-delete-user" class="col-md-6">
-                            <button type="button" id="btn-delete-user" js-id="" class="btn btn-danger btn-block"><i class="fa fa-trash fa-1x"></i>&nbsp;&nbsp;Eliminar usuario</button>
+                            <button type="button" id="btn-delete-user" js-id="" class="btn btn-danger btn-block bg-danger"><i class="fa fa-trash fa-1x"></i>&nbsp;&nbsp;Eliminar usuario</button>
                         </div>
                     </div>
                 </form>
