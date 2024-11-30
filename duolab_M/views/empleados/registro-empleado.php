@@ -40,13 +40,13 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <label>Apellido Paterno</label>
+                                        <label>Primer Apellido </label>
                                         <input type="text" class="form-control" placeholder="Ingrese apellido paterno" name="empleado_apepat" required>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <label>Apellido Materno</label>
+                                        <label>Segundo Apellido</label>
                                         <input type="text" class="form-control" placeholder="Ingrese apellido materno" name="empleado_apemat" required>
                                     </div>
                                 </div>

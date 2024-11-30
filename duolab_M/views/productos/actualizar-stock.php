@@ -62,7 +62,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <label>F. Vencimiento del Lote de Ingreso</label>
+                                        <label>Fecha de Ingreso</label>
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text">

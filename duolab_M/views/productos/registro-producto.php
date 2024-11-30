@@ -76,11 +76,11 @@
                                         <label>Precio</label>
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
-                                                <span class="input-group-text">
-                                                    <i class="fas fa-dollar-sign"></i>
+                                                <span class="input-group-text" >
+                                                    <i class="fas fa-coins"></i>
                                                 </span>
                                             </div>
-                                            <input type="number" min="0" step="any" class="form-control"name="producto_precio" value="" required>
+                                            <input type="number" min="0" step="any" class="form-control"name="producto_precio" value="" required placeholder="L. 0.00">
                                         </div>
                                     </div>
                                 </div>

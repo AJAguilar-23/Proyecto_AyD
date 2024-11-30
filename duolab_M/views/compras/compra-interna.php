@@ -18,7 +18,7 @@
         	<div class="row mb-0">
                 <div class="col-md-12">
                     <div class="m-0 text-dark text-center text-lg">
-                        <i class="fas fa-receipt"></i>&nbsp;&nbsp;Compra Interna
+                        <i class="fas fa-receipt"></i>&nbsp;&nbsp;Compra
                     </div>
                 </div>
             </div>
@@ -77,7 +77,9 @@
 	                    		<!--
 	                            <div class="col-md-3">
 	                            	<div class="row">
+										
 	                            		<div class="col-md-5 text-right">
+
 		                                    <label>TC Venta:</label>
 	                            		</div>
 	                            		<div class="col-md-7">
@@ -88,12 +90,18 @@
 	                                                </span>
 	                                            </div>
 	                                            <input type="number" step="0.01" min="0" class="form-control" placeholder="Venta" name="orden_tcventa">
+
 	                                        </div>
 	                            		</div>
+	
 	                            	</div>
 	                            </div>
+								-->
+								<input type="hidden" step="0.01" min="0" class="form-control" placeholder="Venta" name="orden_tcventa" value="0">
+<!--
 	                            <div class="col-md-3">
 	                            	<div class="row">
+										
 	                            		<div class="col-md-5 text-right">
 		                                    <label>TC Compra:</label>
 	                            		</div>
@@ -106,10 +114,12 @@
 	                                            </div>
 	                                            <input type="number" step="0.01" min="0" class="form-control" placeholder="Compra" name="orden_tccompra">
 	                                        </div>
-	                            		</div>
+
+	                            		</div> 
 	                            	</div>
-	                            </div>
-	                        	-->
+	                            </div>-->
+								<input type="hidden" step="0.01" min="0" class="form-control" placeholder="Compra" name="orden_tccompra" value="0">
+
 	                        	<div class="col-md-4">
 	                        		<div class="form-group">
 	                                    <label>N° Compra</label>
@@ -118,11 +128,8 @@
 	                                    </div>
 	                                </div>
 	                        	</div>
-	                            <div class="col-md-8"></div>
-                    		</div>
-	                        
-	                        <div class="row">
-	                        	<div class="col-md-4">
+								
+								<div class="col-md-4">
 	                                <div class="form-group">
 	                                    <label>Fecha de Emisión</label>
 	                                    <div class="input-group mb-3">
@@ -135,6 +142,11 @@
                                         </div>
 	                                </div>
 	                            </div>
+                    		</div>
+	                        
+	                        <div class="row">
+	                        	
+<!--
 	                            <div class="col-md-4">
 	                                <div class="form-group">
 	                                    <label>Fecha de Entrega</label>
@@ -148,8 +160,11 @@
                                         </div>
 	                                </div>
 	                            </div>
+	-->							<input type="hidden" name="orden_fecentrega" class="form-control" value="<?php echo date('Y-m-d'); ?>" >
+
 	                            <div class="col-md-4">
 	                                <div class="form-group">
+										<!--
 	                                    <label>Tipo de Moneda</label>
 	                                    <div class="input-group mb-3">
                                             <div class="input-group-prepend">
@@ -163,10 +178,11 @@
 	                                        <option value="ME">Moneda Extranjera</option>
 	                                    </select>
                                         </div>
-	                                    
+	-->									<input type="hidden" name="orden_tipomoneda" value="MN">
 	                                </div>
 	                            </div>
-	                            <!--
+
+	                            <!--	
 	                            <div class="col-md-3">
 	                                <div class="form-group">
 	                                    <label>N° Cotización</label>
@@ -267,8 +283,9 @@
 	                            </div>
 	                            <div class="col-md-4">
 	                                <div class="form-group">
-	                                    <label>N° Cuenta</label>
-	                                    <input type="text" name="orden_nrocuenta" placeholder="Número de cuenta" class="form-control">
+	                                    <!--<label>N° Cuenta</label>
+	                                    <input type="text" name="orden_nrocuenta" placeholder="Número de cuenta" class="form-control">-->
+										<input type="hidden" name="orden_nrocuenta" placeholder="Número de cuenta" class="form-control" value="">
 	                                </div>
 	                            </div>
 	                            <input type="hidden" name="orden_nomprov">
@@ -332,7 +349,7 @@
 	                                    </div>
 	                                    <div class="col-md-2">
 	                                        <div class="form-group">
-	                                            <label>Valor IGV</label>
+	                                            <label>Valor ISV</label>
 	                                            <input type="text" name="orden_valorigv" value="0" class="form-control" readonly>
 	                                        </div>
 	                                    </div>
@@ -402,7 +419,7 @@
 			                		</div>
 			                		<div class="row mt-2">
 			                			<div class="col-md-5 text-right">
-			                				<label>IGV</label>
+			                				<label>ISV</label>
 			                			</div>
 			                			<div class="col-md-7">
 			                				<input type="text" name="orden_igv" class="form-control" readonly>

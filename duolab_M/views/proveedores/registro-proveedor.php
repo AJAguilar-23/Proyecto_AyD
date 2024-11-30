@@ -50,7 +50,7 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label>RUC Proveedor</label>
+                                        <label>RTN Proveedor</label>
                                         <input type="text" class="form-control" name="proveedor_numero" 
                                         placeholder="Número de proveedor" required>
                                     </div>
@@ -75,12 +75,16 @@
                                         <input type="text" class="form-control" placeholder="Ingrese ciudad" name="proveedor_ciudad" required>
                                     </div>
                                 </div>
+    
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label>Distrito</label>
-                                        <input type="text" class="form-control" placeholder="Ingrese distrito" name="proveedor_distrito" >
+                                        <!-- mando el distrito en blanco y lo oculto    
+                                        <label>Departamento (opcional)</label>
+                                        -->
+                                        <input type="hidden" class="form-control" placeholder="Ingrese Departamento" name="proveedor_distrito" value=""  >
                                     </div>
                                 </div>
+     
                             </div>
                             <div class="row">
                                 <div class="col-md-9">

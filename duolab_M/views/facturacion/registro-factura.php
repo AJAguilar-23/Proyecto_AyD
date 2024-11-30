@@ -95,7 +95,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-4 col-lg-4">
-                                    <button type="button" id="btn-select-cotizacion bg-primary" class="form-control btn btn-primary">Seleccionar cotización</button>
+                                    <button type="button" id="btn-select-cotizacion " class="form-control btn btn-primary bg-primary">Seleccionar cotización</button>
                                 </div>
                             </div>
                             <div class="row">
@@ -130,13 +130,13 @@
                             <div class="row">
                                 <div class="col-md-2">
                                     <div class="form-group">
-                                        <label>RUC</label>
-                                        <input type="text" maxlength="11" class="form-control" name="facturacion_cliruc" placeholder="RUC" required>
+                                        <label>DNI</label>
+                                        <input type="text" maxlength="11" class="form-control" name="facturacion_cliruc" placeholder="DNI" required>
                                     </div>
                                 </div>
                                 <div class="col-md-7">
                                     <div class="form-group">
-                                        <label>Razón Social / Nombre</label>
+                                        <label>Nombre</label>
                                         <input type="text" name="facturacion_valcliente" class="form-control" placeholder="Nombre de cliente" required>
                                     </div>
                                     <input type="hidden" name="facturacion_cliente">
@@ -203,14 +203,20 @@
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="col-md-3">
+<!--
                                     <label>Tipo de Moneda</label>
                                     <select name="facturacion_tipmon" class="form-control select2" required>
                                         <option value="">Seleccione moneda</option>
                                         <option value="MN" selected>Moneda Nacional</option>
                                         <option value="ME">Moneda Extranjera</option>
                                     </select>
+                                    -->
+                                    <input type="hidden" name="facturacion_tipmon" value="MN">
                                 </div>
+                             
+
                             </div>
                         </div>
                     </div>
@@ -309,7 +315,7 @@
                                     </div>
                                     <div class="row mb-2">
                                         <div class="col-md-6 text-right">
-                                            <label>IGV 18%</label>
+                                            <label>ISV 15%</label>
                                         </div>
                                         <div class="col-md-6">
                                             <input type="number" name="facturacion_igv" min="0" step="0.1" class="form-control" readonly>
