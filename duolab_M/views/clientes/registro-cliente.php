@@ -134,9 +134,9 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Departamento</label>
+                                        <label>Municipio</label>
                                         <select class="form-control select2" style="width: 100%;" name="cliente_provincia" required>
-                                            <option value="">Seleccione un Departamento</option>
+                                            <option value="">Seleccione un Municipio</option>
                                         </select>
                                     </div>
                                 </div>
