@@ -1,3 +1,16 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tooltips con Bootstrap</title>
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+
 <style>
       .bg-primary{
         background: #0001FA !important;
@@ -43,24 +56,24 @@
                         </div>
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label>RUC</label>
-                                        <input minlength="11" maxlength="11" type="text" class="form-control" placeholder="Ingrese RUC" name="cliente_ruc" required>
-                                    </div>
-                                </div>
                                 <div class="col-md-5">
                                     <div class="form-group">
-                                        <label>Razón Social</label>
+                                        <label data-bs-toggle="tooltip" data-bs-placement="top" title="Identidad Emitida en el RNP debe ser de 13 dígitos">DNI</label>
+                                        <input minlength="11" maxlength="11" type="text" class="form-control" placeholder="Ingrese DNI" name="cliente_ruc" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="form-group">
+                                    <label data-bs-toggle="tooltip" data-bs-placement="right" title="Es el nombre legal de la empresa, registrado oficialmente en los organismos gubernamentales y que aparece en los documentos legales, facturas, contratos, y trámites oficiales. Ejemplo: Ejemplo: Constructora Innovadora S.A.">Razón Social</label>
                                         <input type="text" class="form-control" placeholder="Ingrese razón social" name="cliente_razsoc" required>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <!-- <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Nombre Comercial</label>
                                         <input type="text" class="form-control" placeholder="Ingrese nombre comercial" name="cliente_nomcom">
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                             <div class="row">
                                 <div class="col-md-4">
@@ -91,7 +104,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label>Fecha de Registro</label>
+                                    <label data-bs-toggle="tooltip" data-bs-placement="top" title="Fecha de Registro del cliente al sistema">Fecha de Registro</label>
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text">
@@ -111,7 +124,7 @@
                         </div>
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Departamento</label>
                                         <select class="form-control select2" style="width: 100%;" name="cliente_departamento" required>
@@ -119,27 +132,27 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Provincia</label>
+                                        <label>Departamento</label>
                                         <select class="form-control select2" style="width: 100%;" name="cliente_provincia" required>
-                                            <option value="">Seleccione una provincia</option>
+                                            <option value="">Seleccione un Departamento</option>
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <!-- <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Distrito</label>
                                         <select class="form-control select2" style="width: 100%;" name="cliente_distrito" required>
                                             <option value="">Seleccione un distrito</option>
                                         </select>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                             <div class="row">
-                                <div class="col-md-12">
+                                <div class="col-md-10">
                                     <div class="form-group">
-                                        <label>Dirección</label>
+                                        <label data-bs-toggle="tooltip" data-bs-placement="top" title="Una dirección más específica: Barrio Cabañas 3era Ave, 4ta calle">Dirección</label>
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text">
@@ -152,7 +165,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-8">
+                                <div class="col-md-10">
                                     <div class="form-group">
                                         <label>Correo Electrónico</label>
                                         <div class="input-group mb-3">
@@ -165,7 +178,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <!-- <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Pago de Comisión</label>
                                         <div class="input-group mb-3">
@@ -177,7 +190,7 @@
                                             <input type="number" class="form-control" placeholder="Ingrese pago de comisión" name="cliente_pagocomision">
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -204,7 +217,7 @@
                                                             <i class="fas fa-mobile-alt"></i>
                                                         </span>
                                                     </div>
-                                                    <input type="phone" class="form-control" name="cliente_celcont_1" pattern="[0-9--]{0,20}">
+                                                    <input  placeholder="Ejemplo: 9957-5213" type="phone" class="form-control" name="cliente_celcont_1" pattern="[0-9--]{0,20}">
                                                 </div>
                                             </div>
                                         </div>
@@ -234,7 +247,7 @@
                                                             <i class="fas fa-mobile-alt"></i>
                                                         </span>
                                                     </div>
-                                                    <input type="phone" class="form-control" name="cliente_celcont_2" pattern="[0-9--]{0,20}">
+                                                    <input placeholder="Ejemplo: 9957-5213" type="phone" class="form-control" name="cliente_celcont_2" pattern="[0-9--]{0,20}">
                                                 </div>
                                             </div>
                                         </div>
@@ -259,10 +272,10 @@
                         <table id="table-clientes" class="table table-bordered table-hover" style="width: 100%">
                             <thead>
                                 <tr>
-                                    <th>Código</th>
-                                    <th>RUC</th>
+                                    <th>ClienteID</th>
+                                    <th>DNI</th>
                                     <th>Razón Social</th>
-                                    <th>Nombre Comercial</th>
+                                    <th>Dirección</th>
                                     <th>Teléfono</th>
                                     <th>Celular</th>
                                 </tr>
@@ -271,9 +284,9 @@
                             <tfoot>
                                 <tr>
                                     <th>Código</th>
-                                    <th>RUC</th>
+                                    <th>DNI</th>
                                     <th>Razón Social</th>
-                                    <th>Nombre Comercial</th>
+                                    <th>Dirección</th>
                                     <th>Teléfono</th>
                                     <th>Celular</th>
                                 </tr>
@@ -286,3 +299,17 @@
     </div>
 
 </div>
+ <!-- Bootstrap JS -->
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Inicialización de Tooltips -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    tooltipTriggerList.map(function (tooltipTriggerEl) {
+      return new bootstrap.Tooltip(tooltipTriggerEl);
+    });
+  });
+</script>
+</body>
+</html>
