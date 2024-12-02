@@ -13,9 +13,10 @@
     <div class="content">
         <div class="container-fluid">
             <div style="max-width: 1140px;margin: 0 auto;">
+
                 <div class="card card-primary">
                     <div class="card-header">
-                        <div class="card-title">Ventas por Cliente</div>
+                        <div class="card-title">Reporte de Ventas por Cliente</div>
                     </div>
                     <div class="card-body">
                         <div class="row">
@@ -50,6 +51,51 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <div class="card-title">Reporte de Ventas Diarias</div>
+                    </div>
+                    <div class="card-body">
+<!--
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Seleccione un cliente</label>
+                                    <select class="form-control select2" name="customer_list2"></select>
+                                </div>
+                            </div>
+                        </div>
+-->
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Fecha Del dia</label>
+                                    <input type="date" name="date_from2" class="form-control">
+                                </div>
+                            </div>
+<!--
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Fecha Fin</label>
+                                    <input type="date" name="date_to2" class="form-control">
+                                </div>
+                            </div>
+-->
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8"></div>
+                            <div class="col-md-4" >
+                                <button id="btn-rpt-ventas-por-cliente2" class="btn btn-block btn-success">
+                                    <i class="fa fa-file-alt fa-1x"></i>&nbsp;&nbsp;Ver reporte
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+               
+
             </div>
         </div>
     </div>
