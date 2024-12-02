@@ -52,6 +52,31 @@ $("#btn-rpt-ventas-por-cliente2").click(function (e) {
   var url="../../modules/reportes/ventas-por-cliente2.php?&datefrom=" + dateFrom;
   window.open(url);
 });
+
+// boton 3 compras por semana
+$("#btn-rpt-compras-por-semana").click(function (e) {
+  e.preventDefault();
+
+  //var customerId = $('select[name="customer_list2"]').val();
+  var dateFrom = $('input[name="date_from_compra"]').val();
+  var dateTo = $('input[name="date_to_compra"]').val();
+
+  if (dateFrom == ""){
+    $.Notification.notify("error", "bottom-right",
+     "Fecha no seleccionado", "Seleccione una fecha de Inicio para generar el reporte");
+    return;
+  }
+  if (dateTo == ""){
+    $.Notification.notify("error", "bottom-right",
+     "Fecha no seleccionado", "Seleccione una fecha Final para generar el reporte");
+    return;
+  }
+
+  var url="../../modules/reportes/compra-por-semana.php?&datefrom=" + dateFrom + "&dateto=" + dateTo;
+  window.open(url);
+});
+
+
 /*
 $("#btn-product-list").click(function (e) {
     e.preventDefault();
