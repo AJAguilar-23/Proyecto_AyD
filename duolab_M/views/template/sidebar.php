@@ -270,6 +270,7 @@
                   <p>Productos</p>
                 </a>
               </li>
+<!--
               <li class="nav-item">
                 <a id="m_score_ventas" href="<?php echo $functions->direct_paginas()."reportes/score-ventas" ?>" class="nav-link">
                   <i class="fas fa-chart-bar nav-icon"></i>
@@ -288,6 +289,7 @@
                   <p>Gastos en Compras</p>
                 </a>
               </li>
+    -->
             </ul>
           </li>
 

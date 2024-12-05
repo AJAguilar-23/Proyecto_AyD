@@ -70,6 +70,50 @@
                     </div>
                 </div>
 
+                
+                <div class="card card-primary">
+                    <div class="card-header bg-primary" >
+                        <div class="card-title">Reporte de Inventario completo</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Seleccione un estado</label>
+                                    <select class="form-control select2" name="state"></select>
+                                </div>
+                            </div>
+                        </div>
+                        <!--
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Fecha Inicio</label>
+                                    <input type="date" name="date_from" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Fecha Fin</label>
+                                    <input type="date" name="date_to" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+    -->
+                        <div class="row">
+                            <div class="col-md-8"></div>
+                            <div class="col-md-4" >
+                                <button id="btn-rpt-inv-completo" class="btn btn-block btn-warning bg-warning">
+                                    <i class="fa fa-file-alt fa-1x"></i>&nbsp;&nbsp;Ver reporte
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
                 <div class="card card-primary">
                     <div class="card-header bg-primary">
                         <div class="card-title">Reporte de Ventas Diarias</div>

@@ -16,7 +16,24 @@ $.post(
   }
 );
 
-// boton1
+$(document).ready(function() {
+  // Lista de estados con una opción inicial
+  const estados = [
+    { id: "", text: "Seleccionar estado" }, // Opción vacía
+    { id: "1", text: "Activo" },
+    { id: "0", text: "Inactivo" }
+  ];
+
+  // Inicializa el select con Select2 y la lista de estados
+  $('select[name="state"]').select2({
+    data: estados,
+
+  });
+});
+
+
+
+// boton ventas por cliente
 $("#btn-rpt-ventas-por-cliente").click(function (e) {
     e.preventDefault();
 
@@ -35,7 +52,25 @@ $("#btn-rpt-ventas-por-cliente").click(function (e) {
     window.open(url);
 });
 
-// boton2
+// boton de inventario completo
+$("#btn-rpt-inv-completo").click(function (e) {
+  e.preventDefault();
+
+  var state = $('select[name="state"]').val();
+  //var dateFrom = $('input[name="date_from"]').val();
+  //var dateTo = $('input[name="date_to"]').val();
+/*
+  if (customerId == ""){
+    $.Notification.notify("error", "bottom-right",
+     "Cliente no seleccionado", "Seleccione un cliente para generar el reporte");
+    return;
+  }
+*/
+  var url="../../modules/reportes/inv-completo.php?state=" + state;
+  window.open(url);
+});
+
+// boton Ventas diarias
 $("#btn-rpt-ventas-por-cliente2").click(function (e) {
   e.preventDefault();
 
@@ -53,7 +88,7 @@ $("#btn-rpt-ventas-por-cliente2").click(function (e) {
   window.open(url);
 });
 
-// boton 3 compras por semana
+// boton compras por semana
 $("#btn-rpt-compras-por-semana").click(function (e) {
   e.preventDefault();
 

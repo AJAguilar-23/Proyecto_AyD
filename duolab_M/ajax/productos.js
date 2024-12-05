@@ -42,3 +42,74 @@ $("#btn-product-list").click(function (e) {
     e.preventDefault();
     window.location.assign("../../views/productos/listado-producto");
 });
+
+// boton Resumen de Ingresos y gastos
+
+$("#btn-rpt-ingreso-gasto").click(function (e) {
+  e.preventDefault();
+
+  //var customerId = $('select[name="customer_list2"]').val();
+  var dateFrom = $('input[name="date_from_ingreso_gasto"]').val();
+  var dateTo = $('input[name="date_to_ingreso_gasto"]').val();
+
+  if (dateFrom == ""){
+    $.Notification.notify("error", "bottom-right",
+     "Fecha no seleccionado", "Seleccione una fecha de Inicio para generar el reporte");
+    return;
+  }
+  if (dateTo == ""){
+    $.Notification.notify("error", "bottom-right",
+     "Fecha no seleccionado", "Seleccione una fecha Final para generar el reporte");
+    return;
+  }
+
+  var url="../../modules/reportes/ingreso-gasto.php?&datefrom=" + dateFrom + "&dateto=" + dateTo;
+  window.open(url);
+});
+
+
+// boton clientes recurrentes
+$("#btn-rpt-cliente-r").click(function (e) {
+  e.preventDefault();
+
+  //var customerId = $('select[name="customer_list2"]').val();
+  var dateFrom = $('input[name="date_from_cliente_r"]').val();
+  var dateTo = $('input[name="date_to_cliente_r"]').val();
+/*
+  if (dateFrom == ""){
+    $.Notification.notify("error", "bottom-right",
+     "Fecha no seleccionado", "Seleccione una fecha de Inicio para generar el reporte");
+    return;
+  }
+  if (dateTo == ""){
+    $.Notification.notify("error", "bottom-right",
+     "Fecha no seleccionado", "Seleccione una fecha Final para generar el reporte");
+    return;
+  }
+*/
+  var url="../../modules/reportes/cliente-r.php?&datefrom=" + dateFrom + "&dateto=" + dateTo;
+  window.open(url);
+});
+
+// boton reporte Facturas Anuladas
+$("#btn-rpt-fac-anulada").click(function (e) {
+  e.preventDefault();
+
+  //var customerId = $('select[name="customer_list2"]').val();
+  var dateFrom = $('input[name="date_from_ingreso_gasto"]').val();
+  var dateTo = $('input[name="date_to_ingreso_gasto"]').val();
+/*
+  if (dateFrom == ""){
+    $.Notification.notify("error", "bottom-right",
+     "Fecha no seleccionado", "Seleccione una fecha de Inicio para generar el reporte");
+    return;
+  }
+  if (dateTo == ""){
+    $.Notification.notify("error", "bottom-right",
+     "Fecha no seleccionado", "Seleccione una fecha Final para generar el reporte");
+    return;
+  }
+*/
+  var url="../../modules/reportes/fac-anulada.php?&datefrom=" + dateFrom + "&dateto=" + dateTo;
+  window.open(url);
+});
