@@ -2,7 +2,7 @@ $(document).ready(function(){
   $("#m_almacen").attr("class","nav-link active");
   $("#m_almacen").parent().attr("class","nav-item has-treeview menu-open");
   $("#m_actualizar_stock").attr("class","nav-link active");
-  $(document).prop('title', 'Actualizar Stock - DuoLab Group');
+  $(document).prop('title', 'Actualizar Stock -Casa Comercial Murillo ');
 });
 
 $.post(
@@ -61,6 +61,14 @@ $("#FRM_INSERT_MOV").submit(function (e) {
         }
         
     }
+    //validaciones
+    var movGuiaOrden = $('input[name="mov_guia_orden"]').val();
+        if (!/^\d{7}$/.test(movGuiaOrden)) {
+            $.Notification.notify("error", "bottom-right",
+            "Número de Guía/Orden Incorrecto", "El número de guía/orden debe contener solo numeros.");
+            return;
+        }
+
 
     var form = $(this);
     var idform = form.attr("id");

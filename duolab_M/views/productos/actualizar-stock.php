@@ -50,7 +50,8 @@
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label>Nro. Guía / Orden</label>
-                                        <input type="text" class="form-control" placeholder="Ingrese número de guía u orden" name="mov_guia_orden">
+                                        <input type="text" class="form-control" placeholder="Ingrese número de guía u orden" name="mov_guia_orden" maxlength="7"  minlength="7"
+                                        required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -69,7 +70,7 @@
                                                     <i class="far fa-calendar-alt"></i>
                                                 </span>
                                             </div>
-                                            <input type="date" class="form-control" name="mov_fec_venc" value="<?php echo date('Y-m-d'); ?>">
+                                            <input type="date" class="form-control" name="mov_fec_venc" value="<?php echo date('Y-m-d'); ?>" readonly="true">
                                         </div>
                                     </div>
                                 </div>

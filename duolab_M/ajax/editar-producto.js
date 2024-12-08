@@ -17,7 +17,7 @@ $(document).ready(function(){
   $("#m_almacen").attr("class","nav-link active");
   $("#m_almacen").parent().attr("class","nav-item has-treeview menu-open");
   $("#m_registro_producto").attr("class","nav-link active");
-  $(document).prop('title', 'Editar Producto - DuoLab Group');
+  $(document).prop('title', 'Editar Producto - Casa Comercial Murillo');
 });
 
 $(document).ready(function() {
@@ -87,6 +87,29 @@ $("#FRM_INSERT_PRODUCTO").submit(function (e) {
     var formElement = document.getElementById(idform);
     var formData_rec = new FormData(formElement);
     var id_product = $('input[name="producto_id"]').val();
+
+    //validaciones
+    var codigoProducto = $('input[name="producto_code"]').val();
+    if (codigoProducto.length < 8 || codigoProducto.length > 8){
+        $.Notification.notify("error", "bottom-right",
+         "Codigo Incorrecto", "El código debe tener exactamente 8 caracteres");
+        return;
+      }
+      var productoMarca = $('input[name="producto_marca"]').val();
+      if (!/^[a-zA-Z]+$/.test(productoMarca)) {
+        $.Notification.notify("error", "bottom-right",
+            "Marca Incorrecta", "La marca debe contener solo letras.");
+        return;
+      }
+      var valorMedida = $('select[name="producto_unitvalue"]').val();
+    if (valorMedida == ""){
+        $.Notification.notify("error", "bottom-right",
+         "Unidad de medida no Seleccionada", "Por favor seleccione una unidad de medida");
+        return;
+      }
+
+
+
     $.ajax({
         type: "POST",
         url: url,

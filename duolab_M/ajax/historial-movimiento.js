@@ -2,7 +2,7 @@ $(document).ready(function(){
   $("#m_almacen").attr("class","nav-link active");
   $("#m_almacen").parent().attr("class","nav-item has-treeview menu-open");
   $("#m_historial_movimiento").attr("class","nav-link active");
-  $(document).prop('title', 'Historial de Movimientos - DuoLab Group');
+  $(document).prop('title', 'Historial de Movimientos - Casa Comercial Murillo');
 });
 
 var tabla_movimientos = $('#table-movimientos');
@@ -20,7 +20,7 @@ tabla_movimientos.DataTable({
         { "data": "CANTIDAD" },
 
         { "data": "NOMBRE_PROVEEDOR" },
-        { "data": "FECVENC" },
+        //{ "data": "FECVENC" },
         { "data": "DOC_REFERENCIA" },
 
         { "data": "OBSERVACION" },

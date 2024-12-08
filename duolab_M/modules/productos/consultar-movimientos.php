@@ -33,7 +33,7 @@ if ($rowsNumber > 0) {
         $ROWDATA['NOMBRE_PRODUCTO'] = $ROW["NOMBRE_PRODUCTO"];
  
         $ROWDATA['DOC_REFERENCIA'] = $ROW["DOC_REFERENCIA"];
-        $ROWDATA['FECVENC'] = date("d/m/Y",strtotime($ROW["FECVENC"]));
+        //$ROWDATA['FECVENC'] = date("d/m/Y",strtotime($ROW["FECVENC"]));
         $ROWDATA['NOMBRE_PROVEEDOR'] = $ROW["NOMBRE_PROVEEDOR"];
 
         if ($ROW["OBSERVACION"] == ""){
@@ -47,13 +47,13 @@ if ($rowsNumber > 0) {
         }else{
             $ROWDATA['DOC_REFERENCIA'] = $ROW["DOC_REFERENCIA"];
         }
-
+/*
         if ($ROW["FECVENC"] == ""){
             $ROWDATA['FECVENC'] = "-";
         }else{
             $ROWDATA['FECVENC'] = date("d/m/Y",strtotime($ROW["FECVENC"]));
         }
-
+*/
         if ($ROW["NOMBRE_PROVEEDOR"] == ""){
             $ROWDATA['NOMBRE_PROVEEDOR'] = "-";
         }else{

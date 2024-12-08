@@ -38,7 +38,7 @@
                                 <div class="col-md-2">
                                     <div class="form-group">
                                         <label>Código</label>
-                                        <input type="text" class="form-control" placeholder="Ingrese código" name="producto_code" required>
+                                        <input type="text" class="form-control" placeholder="Ingrese código" name="producto_code" maxlength="8"  minlength="8" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -58,7 +58,7 @@
                                 <div class="col-md-8">
                                     <div class="form-group">
                                         <label>Descripción</label>
-                                        <input type="text" class="form-control" placeholder="Ingrese descripción de producto" name="producto_description">
+                                        <input type="text" class="form-control" placeholder="Ingrese descripción de producto" name="producto_description" required>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -66,12 +66,11 @@
                                         <label>Valor de Medida</label>
                                         <select class="form-control select2" name="producto_unitvalue">
                                             <option value="">Seleccione</option>
-                                            <option value="gr">gr (Gramos)</option>
-                                            <option value="mg">mg (Miligramos)</option>
-                                            <option value="lt">lt (Litros)</option>
-                                            <option value="ml">ml (Mililitros)</option>
-                                            <option value="gl">gl (Galones)</option>
                                             <option value="und">und (Unidad)</option>
+                                            <option value="paq">paq (Paquete)</option>
+                                            <option value="m">m (Metro)</option>
+                                            <option value="lt">lt (Litros)</option>
+                                            <option value="gl">gl (Galones)</option>
                                         </select>
                                     </div>
                                 </div>

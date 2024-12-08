@@ -33,7 +33,6 @@
                                     <th>Producto</th>
                                     <th>Cantidad</th>
                                     <th>Proveedor</th>
-                                    <th>Vencimiento</th>
                                     <th>Guía/Orden</th>
                                     <th>Observación</th>
                                     <th>Usuario</th>
