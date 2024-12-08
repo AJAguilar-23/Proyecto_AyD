@@ -23,7 +23,7 @@ if (!isset($_GET['dateto'])){
 $dateFrom = $_GET['datefrom'];
 $dateTo = $_GET['dateto'];
 
-$reportTitle = "Resumen de Ingresos y Gastos";
+$reportTitle = "Resumen de Ventas y Compras";
 $rptDateInterval = "COMPRAS Y VENTAS (Sin rango de fecha)";
 
 $productString = "";
@@ -43,7 +43,7 @@ SELECT
 FROM 
     (SELECT 'Venta' AS tipo) AS dummy
 LEFT JOIN tbl_invoice i
-    ON i.date BETWEEN '2024-12-01' AND '2025-05-26'
+    ON i.date BETWEEN '".$dateFrom."' AND '".$dateTo."'
 
 UNION ALL
 
@@ -54,26 +54,18 @@ SELECT
 FROM 
     (SELECT 'Compra' AS tipo) AS dummy
 LEFT JOIN tbl_purchase p
-    ON p.issue_date BETWEEN '2021-05-25' AND '2022-05-26'
+    ON p.issue_date BETWEEN '".$dateFrom."' AND '".$dateTo."'
 )";
+
+
 
 $sqlStatement = $pdo->prepare($sqlString);
 $sqlStatement->execute();
 $rowsNumber = $sqlStatement->rowCount();
 
-/*
-$data = [];
-$labels = [];
 
-foreach ($sqlStatement as $row) {
-    $data[] = (int)$row["suma"];
-    $labels[] = $row["v"];
-}
 
-// Generar gráfico de barras
-$chartFile = __DIR__ . '/chart.png';
-generateBarChart($data, $labels, $chartFile);
-*/
+
 $pdf = new PDF();
 $pdf->AliasNbPages();
 $pdf->SetHeaderTitle(utf8_decode($reportTitle));
@@ -112,6 +104,7 @@ if ($rowsNumber > 0) {
 		$pdf->Ln();
 
 	}
+
 
 }else{
 	$pdf->Cell(276,6,utf8_decode("No existen datos para la fecha especificada"),1,0,'C');

@@ -138,8 +138,8 @@ $pdf->Ln(10);
 $pdf->SetFont('Arial','B',9);
 $pdf->Cell(0,6,utf8_decode($rptDateInterval),1,0,'C',1);
 $pdf->Ln();
-$pdf->Cell(16,6,utf8_decode('ID'),1,0,'C',1);
-$pdf->Cell(58,6,utf8_decode('Nro. Doc.'),1,0,'C',1);
+//$pdf->Cell(16,6,utf8_decode('ID'),1,0,'C',1);
+$pdf->Cell(74,6,utf8_decode('Factura'),1,0,'C',1);
 $pdf->Cell(54,6,utf8_decode('Fecha '),1,0,'C',1);
 //$pdf->Cell(30,6,utf8_decode('Fecha Entrega'),1,0,'C',1);
 $pdf->Cell(59,6,utf8_decode('Estado'),1,0,'C',1);
@@ -157,8 +157,8 @@ if ($rowsNumber > 0) {
 	$totalSales = 0;
 
     foreach ($sqlStatement as $row) {
-		$pdf->Cell(16,6,utf8_decode($row['id']),1,0,'C');
-		$pdf->Cell(58,6,utf8_decode($row['DOC_NUMBER']),1,0,'C');
+		//$pdf->Cell(16,6,utf8_decode($row['id']),1,0,'C');
+		$pdf->Cell(74,6,utf8_decode($row['DOC_NUMBER']),1,0,'C');
 		$pdf->Cell(54,6,utf8_decode(date("d/m/Y", strtotime($row["date"]))),1,0,'C');
 		//$pdf->Cell(30,6,utf8_decode(date("d/m/Y", strtotime($row["delivery_date"]))),1,0,'C');
 		$pdf->Cell(59,6,utf8_decode($row['STATUS']),1,0,'C');

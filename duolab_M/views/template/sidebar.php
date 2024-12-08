@@ -3,6 +3,37 @@
       .sidebar-dark-primary{
         background: #0B1010 !important;
       }
+      a#m_inicio.nav-link.active{
+      background-color: #0001FA !important;
+      }
+      a#m_clientes.nav-link.active{
+      background-color: #0001FA !important;
+      }
+      a#m_almacen.nav-link.active{
+      background-color: #0001FA !important;
+      }
+      a#m_proveedores.nav-link.active{
+      background-color: #0001FA !important;
+      }
+      a#m_cotizacion.nav-link.active{
+      background-color: #0001FA !important;
+      }
+      a#m_facturacion.nav-link.active{
+      background-color: #0001FA !important;
+      }
+      a#m_compras.nav-link.active{
+      background-color: #0001FA !important;
+      }
+      a#m_reportes.nav-link.active{
+      background-color: #0001FA !important;
+      }
+      a#m_empleados.nav-link.active{
+      background-color: #0001FA !important;
+      }
+      a#.nav-link.active{
+      background-color: #0001FA !important;
+      }
+
 </style>  
 
 
@@ -37,8 +68,10 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a id="m_inicio" href="<?php echo $functions->direct_paginas()."home" ?>" class="nav-link">
+            <a id="m_inicio" href="<?php echo $functions->direct_paginas()."home" ?>" class="nav-link" >
+              
               <i class="nav-icon fas fa-tachometer-alt"></i>
+
               <p>Inicio</p>
             </a>
           </li>
@@ -261,13 +294,13 @@
               <li class="nav-item">
               <a id="m_rpt_clientes" href="<?php echo $functions->direct_paginas()."reportes/clientes" ?>" class="nav-link">
                 <i class="fas fa-file-alt nav-icon"></i>
-                <p>Clientes</p>
+                <p>Detallados</p>
               </a>
               </li>
               <li class="nav-item">
                 <a id="m_rpt_productos" href="<?php echo $functions->direct_paginas()."reportes/productos" ?>" class="nav-link">
                   <i class="fas fa-file-alt nav-icon"></i>
-                  <p>Productos</p>
+                  <p>Otros</p>
                 </a>
               </li>
 <!--

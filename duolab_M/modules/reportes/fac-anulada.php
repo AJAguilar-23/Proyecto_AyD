@@ -29,7 +29,7 @@ $productString = "";
 $dateString = "";
 
 if ($dateFrom!= "" && $dateTo!= ""){
-	$dateString = " AND (th.date BETWEEN '" . $dateFrom . "' AND '". $dateTo . "')";
+	//$dateString = " AND (th.date BETWEEN '" . $dateFrom . "' AND '". $dateTo . "')";
 	$dateString = "(date BETWEEN '".$dateFrom."' AND '".$dateTo."')AND";
 
 	$rptDateInterval = "FACTURAS DEL " . date("d/m/Y", strtotime($dateFrom)) . " AL " . date("d/m/Y", strtotime($dateTo));

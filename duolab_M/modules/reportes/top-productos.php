@@ -64,7 +64,7 @@ $pdf->SetSubject($reportTitle,true);
 $pdf->SetAuthor("ESG Perú",true);
 $pdf->SetCreator("fpdf v1.82",true);
 
-$pdf->SetFillColor(232,232,232);
+$pdf->SetFillColor(254, 196, 9);
 $pdf->SetFont('Arial','B',10);
 
 $pdf->Cell(8,6,utf8_decode('N°'),1,0,'C',1);

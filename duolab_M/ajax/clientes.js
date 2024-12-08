@@ -2,7 +2,7 @@ $(document).ready(function(){
   $("#m_reportes").attr("class","nav-link active");
   $("#m_reportes").parent().attr("class","nav-item has-treeview menu-open");
   $("#m_rpt_clientes").attr("class","nav-link active");
-  $(document).prop('title', 'Reportes de Clientes - DuoLab Group');
+  $(document).prop('title', 'Reportes de Clientes - Casa Comercial Murillo');
 });
 
 //lista para el combo1
@@ -30,6 +30,17 @@ $(document).ready(function() {
 
   });
 });
+//lista para combo de productos combo2
+$.post(
+  "../../modules/productos/listar-productos-xprov.php",
+  { ESTADO: "ALL", REPORT : 1 },
+  function(data) {
+    $('select[name="product_list"]').empty();
+    $('select[name="product_list"]').select2({
+      data: JSON.parse(data)
+    });
+  }
+);
 
 
 
@@ -110,6 +121,23 @@ $("#btn-rpt-compras-por-semana").click(function (e) {
   var url="../../modules/reportes/compra-por-semana.php?&datefrom=" + dateFrom + "&dateto=" + dateTo;
   window.open(url);
 });
+
+// boton undidades mas vendidas
+$("#btn-rpt-unidades-vendidas-cliente").click(function (e) {
+  e.preventDefault();
+  var productId=$('select[name="product_list"]').val();
+  var dateFrom = $('input[name="date_from_uv"]').val();
+  var dateTo = $('input[name="date_to_uv"]').val();
+  var url="../../modules/reportes/unidades-vendidas-por-cliente.php?productid=" + productId 
+  + "&datefrom=" + dateFrom + "&dateto=" + dateTo;
+  window.open(url);
+});
+/*
+$("#btn-product-list").click(function (e) {
+  e.preventDefault();
+  window.location.assign("../../views/productos/listado-producto");
+});
+
 
 
 /*

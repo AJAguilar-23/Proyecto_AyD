@@ -94,7 +94,7 @@ $pdf->SetSubject($reportTitle,true);
 $pdf->SetAuthor("ESG Perú",true);
 $pdf->SetCreator("fpdf v1.82",true);
 
-$pdf->SetFillColor(232,232,232);
+$pdf->SetFillColor(254, 196, 9);
 
 if ($productId!= 0 && $productId!= ""){
 	$pdf->SetFont('Arial','B',9);
@@ -132,8 +132,8 @@ if ($productId!= 0 && $productId!= ""){
 $pdf->SetFont('Arial','B',9);
 $pdf->Cell(0,6,utf8_decode($rptDateInterval),1,0,'C',1);
 $pdf->Ln();
-$pdf->Cell(24,6,utf8_decode('RUC'),1,0,'C',1);
-$pdf->Cell(223,6,utf8_decode('Nombre'),1,0,'L',1);
+$pdf->Cell(24,6,utf8_decode('DNI'),1,0,'C',1);
+$pdf->Cell(223,6,utf8_decode('Nombre del Cliente'),1,0,'L',1);
 $pdf->Cell(30,6,utf8_decode('UNIDADES'),1,0,'C',1);
 $pdf->Ln();
 

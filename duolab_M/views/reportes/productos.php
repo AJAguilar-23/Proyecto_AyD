@@ -16,13 +16,42 @@
       }
  </style>
 
+ <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+ <script type="text/javascript">
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Año', 'Ventas', 'Compras'],
+          ['2024', 1000, 400],
+        ]);
+
+        var options = {
+          chart: {
+            title: 'Casa Comercial Murillo',
+            subtitle: 'Ventas y compras 2024',
+          },
+          bars: 'horizontal' // Required for Material Bar Charts.
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('barchart_material'));
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+        
+        document.getElementById('variable').value= chart.getImageURI
+      }
+    </script>
+
+
+
 <div class="content-wrapper">
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-0">
                 <div class="col-md-12">
                     <div class="m-0 text-dark text-center text-lg">
-                        <i class="fas fa-file-alt"></i>&nbsp;&nbsp;Reporte Otros
+                        <i class="fas fa-file-alt"></i>&nbsp;&nbsp;Otros Reportes
                     </div>
                 </div>
             </div>
@@ -34,7 +63,7 @@
 
             <div class="card card-primary">
                     <div class="card-header bg-primary">
-                        <div class="card-title">Resumen de Ingresos y gastos</div>
+                        <div class="card-title">Resumen de Ventas y Compras</div>
                     </div>
                     <div class="card-body">
 
@@ -55,17 +84,23 @@
                         <div class="row">
                             <div class="col-md-8"></div>
                             <div class="col-md-4" >
+
                                 <button id="btn-rpt-ingreso-gasto" class="btn btn-block btn-warning bg-warning">
                                     <i class="fa fa-file-alt fa-1x"></i>&nbsp;&nbsp;Ver reporte
                                 </button>
                             </div>
+<!--
+                            <form  method="post" id="hacer_pdf" action="ingreso-gasto.php">
+                            <div id="barchart_material" style="width: 450px; height: 250;"></div>
+                            </form>
+    -->
                         </div>
                     </div>
                 </div>
 
                 <div class="card card-primary">
                     <div class="card-header bg-primary">
-                        <div class="card-title">Reporte de clientes recurrentes</div>
+                        <div class="card-title">Reporte Top 10 Clientes Recurrentes</div>
                     </div>
                     <div class="card-body">
 
@@ -90,47 +125,12 @@
                                     <i class="fa fa-file-alt fa-1x"></i>&nbsp;&nbsp;Ver reporte
                                 </button>
                             </div>
+
                         </div>
                     </div>
                 </div>
 
 
-                <div class="card card-primary">
-                    <div class="card-header bg-primary">
-                        <div class="card-title">Reporte de Unidades Vendidas por Cliente</div>
-                    </div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Seleccione un producto</label>
-                                    <select class="form-control select2" name="product_list"></select>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <label>Fecha Inicio</label>
-                                    <input type="date" name="date_from" class="form-control">
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <label>Fecha Fin</label>
-                                    <input type="date" name="date_to" class="form-control">
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="row">
-                            <div class="col-md-8"></div>
-                            <div class="col-md-4" >
-                                <button id="btn-rpt-unidades-vendidas-cliente" class="btn btn-block btn-warning bg-warning">
-                                    <i class="fa fa-file-alt fa-1x"></i>&nbsp;&nbsp;Ver reporte
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
                 <div class="card card-primary">
                     <div class="card-header bg-primary">
