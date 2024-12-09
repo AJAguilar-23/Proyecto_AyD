@@ -11,7 +11,7 @@ if ($FILTER_CLI == "ALL") {
         foreach ($sqlStatement as $ROW) {
             $ROWDATA['CODIGO'] = "CLI-" . $ROW["client_id"];
             $ROWDATA['RAZ_SOC'] = $ROW["business_name"];
-            $ROWDATA['NOM_COM'] = $ROW["trade_name"];
+            $ROWDATA['DIRECCION'] = $ROW["address"];
             $ROWDATA['RUC'] = $ROW["ruc"];
             $ROWDATA['TELEF'] = $ROW["phone"];
             $ROWDATA['CELULAR'] = $ROW["cellphone"];

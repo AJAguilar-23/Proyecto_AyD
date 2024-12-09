@@ -59,7 +59,7 @@
                                 <div class="col-md-5">
                                     <div class="form-group">
                                         <label data-bs-toggle="tooltip" data-bs-placement="top" title="Identidad Emitida en el RNP debe ser de 13 dígitos">DNI</label>
-                                        <input minlength="11" maxlength="11" type="text" class="form-control" placeholder="Ingrese DNI" name="cliente_ruc" required>
+                                        <input minlength="13" maxlength="13" type="text" class="form-control" placeholder="Ingrese DNI" name="cliente_ruc" required>
                                     </div>
                                 </div>
                                 <div class="col-md-7">
@@ -71,7 +71,6 @@
 
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label>Nombre Comercial</label>
                                         <input type="hidden" class="form-control" placeholder="Ingrese nombre comercial" name="cliente_nomcom" value ="">
                                     </div>
                                 </div>
@@ -278,7 +277,7 @@
                         <table id="table-clientes" class="table table-bordered table-hover" style="width: 100%">
                             <thead>
                                 <tr>
-                                    <th>ClienteID</th>
+                                    <th>Cliente ID</th>
                                     <th>DNI</th>
                                     <th>Razón Social</th>
                                     <th>Dirección</th>
@@ -289,7 +288,7 @@
                             <tbody></tbody>
                             <tfoot>
                                 <tr>
-                                    <th>Código</th>
+                                    <th>Cliente ID</th>
                                     <th>DNI</th>
                                     <th>Razón Social</th>
                                     <th>Dirección</th>
