@@ -101,7 +101,8 @@
                                 <div class="col-md-2">
                                     <div class="form-group">
                                         <label>DNI</label>
-                                        <input type="text" maxlength="11" class="form-control" name="cotizacion_cliruc" placeholder="DNI" required>
+                                        <input type="text" minlength="13"maxlength="13" class="form-control" name="cotizacion_cliruc" placeholder="DNI" required
+                                        >
                                     </div>
                                 </div>
                                 <div class="col-md-7">
@@ -109,6 +110,7 @@
                                         <label>Nombre</label>
                                         <input type="text" name="cotizacion_valcliente" class="form-control" placeholder="Nombre de cliente" required>
                                     </div>
+
                                     <input type="hidden" name="cotizacion_cliente">
                                 </div>
                                 <div class="col-md-3">
@@ -120,7 +122,8 @@
                                                     <i class="far fa-calendar-alt"></i>
                                                 </span>
                                             </div>
-                                            <input type="date" class="form-control" placeholder="Fecha de cotización" name="cotizacion_fecha" value="<?php echo date("Y-m-d"); ?>">
+                                            <input type="date" class="form-control" placeholder="Fecha de cotización" name="cotizacion_fecha" value="<?php echo date("Y-m-d"); ?>"
+                                            readonly="true">
                                         </div>
                                     </div>
                                 </div>
@@ -216,7 +219,8 @@
                                 
                                 <div class="col-md-2">
                                     <label>Precio Unitario</label>
-                                    <input type="number" min="0" class="form-control" name="cotizacion_prodprecio" placeholder="" value="0.00">
+                                    <input type="number" min="0" class="form-control" name="cotizacion_prodprecio" placeholder="" value="0.00"
+                                    readonly="true">
                                 </div>
                                 <div class="col-md-2">
                                     <label>Cantidad</label>

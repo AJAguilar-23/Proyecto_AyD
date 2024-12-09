@@ -52,7 +52,7 @@
                                     <div class="form-group">
                                         <label>RTN Proveedor</label>
                                         <input type="text" class="form-control" name="proveedor_numero" 
-                                        placeholder="Número de proveedor" required>
+                                        placeholder="Número de proveedor" maxlength="14"  minlength="14"required>
                                     </div>
                                 </div>
                                 <div class="col-md-8">
@@ -78,7 +78,7 @@
     
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <!-- mando el distrito en blanco y lo oculto    
+                                        <!-- mando el distrito en blanco y lo oculto
                                         <label>Departamento (opcional)</label>
                                         -->
                                         <input type="hidden" class="form-control" placeholder="Ingrese Departamento" name="proveedor_distrito" value=""  >
@@ -143,7 +143,7 @@
                                         <div class="col-md-7">
                                             <div class="form-group">
                                                 <label>Nombre</label>
-                                                <input type="text" class="form-control" placeholder="Ingrese nombre de contacto" name="proveedor_contnom_1">
+                                                <input type="text" class="form-control" placeholder="Ingrese nombre de contacto" name="proveedor_contnom_1" required>
                                             </div>
                                         </div>
                                         <div class="col-md-5">
@@ -155,7 +155,8 @@
                                                             <i class="fas fa-phone"></i>
                                                         </span>
                                                     </div>
-                                                    <input type="phone" class="form-control" name="proveedor_conttelef_1">
+                                                    <input type="phone" class="form-control" name="proveedor_conttelef_1" required
+                                                    required minlength="7" maxlength="11" pattern="[0-9]{7,11}" >
                                                 </div>
                                             </div>
                                         </div>
@@ -190,7 +191,8 @@
                                                             <i class="fas fa-phone"></i>
                                                         </span>
                                                     </div>
-                                                    <input type="phone" class="form-control" name="proveedor_conttelef_2">
+                                                    <input type="phone" class="form-control" name="proveedor_conttelef_2"
+                                                         minlength="7" maxlength="11"  >
                                                 </div>
                                             </div>
                                         </div>
@@ -222,8 +224,10 @@
                                     </div>
                                     <div class="form-group">
                                         <label><i class="fas fa-piggy-bank"></i> Cta. Corriente</label>
-                                        <input type="text" name="proveedor_ctacorriente_1" class="form-control" placeholder="Ingrese cuenta corriente">
+                                        <input type="text" name="proveedor_ctacorriente_1" class="form-control" placeholder="Ingrese cuenta corriente"
+                                        minlength="28" maxlength="28">
                                     </div>
+
                                     <div class="form-group">
                                         <label><i class="fas fa-user-alt"></i> Titular Cta.</label>
                                         <input type="text" name="proveedor_titularcta_1" class="form-control" placeholder="Ingrese titular de cuenta corriente">
@@ -252,7 +256,8 @@
                                     </div>
                                     <div class="form-group">
                                         <label><i class="fas fa-piggy-bank"></i> Cta. Corriente</label>
-                                        <input type="text" name="proveedor_ctacorriente_2" class="form-control" placeholder="Ingrese cuenta corriente">
+                                        <input type="text" name="proveedor_ctacorriente_2" class="form-control" placeholder="Ingrese cuenta corriente"
+                                        minlength="28" maxlength="28">
                                     </div>
                                     <div class="form-group">
                                         <label><i class="fas fa-user-alt"></i> Titular Cta.</label>

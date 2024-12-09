@@ -475,6 +475,27 @@ $("#FRM_INSERT_COTIZACION").submit(function(e) {
   var formData_rec = new FormData(formElement);
   formData_rec.append("cotiz_prods", JSON.stringify(tbl_data));
   var id_cotizacion = $('input[name="id_cotizacion"]').val();
+
+  var dni = $('input[name="cotizacion_cliruc"]').val();
+  if (dni.length < 13 || rtn.length > 13){
+      $.Notification.notify("error", "bottom-right",
+       "DNI Incorrecto", "El DNI debe tener exactamente 13 caracteres");
+      return;
+    }
+    if (!/^\d{14}$/.test(dni)) {
+      $.Notification.notify("error", "bottom-right",
+      "Número de DNI Incorrecto", "El número de DNI debe contener solo numeros.");
+      return;
+  }
+  
+  var nombre = $('input[name="cotizacion_valcliente"]').val();
+      if (nombre !== "" && !/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/.test(nombre)) {
+            $.Notification.notify("error", "bottom-right",
+            "Nombre Incorrecto", "El nombre debe contener solo letras.");
+        return;
+            }
+
+
   $.ajax({
     type: "POST",
     url: url,
