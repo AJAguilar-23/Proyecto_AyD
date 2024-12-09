@@ -68,12 +68,13 @@
                                         <input type="text" class="form-control" placeholder="Ingrese razón social" name="cliente_razsoc" required>
                                     </div>
                                 </div>
-                                <!-- <div class="col-md-4">
+
+                                <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Nombre Comercial</label>
-                                        <input type="text" class="form-control" placeholder="Ingrese nombre comercial" name="cliente_nomcom">
+                                        <input type="hidden" class="form-control" placeholder="Ingrese nombre comercial" name="cliente_nomcom" value ="">
                                     </div>
-                                </div> -->
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-4">
@@ -134,20 +135,23 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
+                                        
                                         <label>Municipio</label>
-                                        <select class="form-control select2" style="width: 100%;" name="cliente_provincia" required>
+                                        <select class="form-control select2" style="width: 100%;" name="cliente_provincia" >
                                             <option value="">Seleccione un Municipio</option>
                                         </select>
                                     </div>
                                 </div>
-                                <!-- <div class="col-md-4">
+                                
+                                 <div class="col-md-4 d-none" >
                                     <div class="form-group">
-                                        <label>Distrito</label>
-                                        <select class="form-control select2" style="width: 100%;" name="cliente_distrito" required>
+                                        <!--
+                                        <label>Distrito</label>-->
+                                        <select class="form-control select2" style="width: 100%;" name="cliente_distrito" value="">
                                             <option value="">Seleccione un distrito</option>
                                         </select>
                                     </div>
-                                </div> -->
+                                </div> 
                             </div>
                             <div class="row">
                                 <div class="col-md-10">
@@ -178,7 +182,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- <div class="col-md-4">
+
+                                 <div class="col-md-4 d-none    ">
                                     <div class="form-group">
                                         <label>Pago de Comisión</label>
                                         <div class="input-group mb-3">
@@ -187,10 +192,11 @@
                                                     <i class="fas fa-dollar-sign"></i>
                                                 </span>
                                             </div>
-                                            <input type="number" class="form-control" placeholder="Ingrese pago de comisión" name="cliente_pagocomision">
+                                            <input type="hidden" class="form-control" placeholder="Ingrese pago de comisión" name="cliente_pagocomision" value="">
                                         </div>
                                     </div>
-                                </div> -->
+                                </div>
+
                             </div>
                         </div>
                     </div>
