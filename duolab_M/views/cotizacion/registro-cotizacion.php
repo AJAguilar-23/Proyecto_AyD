@@ -101,7 +101,7 @@
                                 <div class="col-md-2">
                                     <div class="form-group">
                                         <label>DNI</label>
-                                        <input type="text" minlength="14"maxlength="14" class="form-control" name="cotizacion_cliruc" placeholder="DNI" required
+                                        <input type="text" minlength="13"maxlength="13" class="form-control" name="cotizacion_cliruc" placeholder="DNI" required
                                         >
                                     </div>
                                 </div>

@@ -477,9 +477,9 @@ $("#FRM_INSERT_COTIZACION").submit(function(e) {
   var id_cotizacion = $('input[name="id_cotizacion"]').val();
 
   var dni = $('input[name="cotizacion_cliruc"]').val();
-  if (dni.length < 14 || rtn.length > 14){
+  if (dni.length < 13 || rtn.length > 13){
       $.Notification.notify("error", "bottom-right",
-       "DNI Incorrecto", "El DNI debe tener exactamente 14 caracteres");
+       "DNI Incorrecto", "El DNI debe tener exactamente 13 caracteres");
       return;
     }
     if (!/^\d{14}$/.test(dni)) {
