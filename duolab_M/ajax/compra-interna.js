@@ -3,42 +3,45 @@ $("#btn-save-orden").prop("disabled", true);
 $("#btn-add-prodtporden").prop("disabled", true);
 $("#btn-select-orden").prop("disabled", true);
 $('#div_diaspago').hide();
-$('input[name="orden_tipopago"]').prop("required",false);
+$('input[name="orden_tipopago"]').prop("required", false);
 
-$(document).ready(function(){
-  $("#m_compras").attr("class","nav-link active");
-  $("#m_compras").parent().attr("class","nav-item has-treeview menu-open");
-  $("#m_compra_interna").attr("class","nav-link active");
+$(document).ready(function () {
+  $("#m_compras").attr("class", "nav-link active");
+  $("#m_compras").parent().attr("class", "nav-item has-treeview menu-open");
+  $("#m_compra_interna").attr("class", "nav-link active");
   $(document).prop('title', 'Compra Interna - DuoLab Group');
+
+  var fechaActual = new Date().toISOString().split('T')[0]; // Ejemplo: 2024-12-08
+  $('input[name="orden_fecemision"]').val(fechaActual).prop('readonly', true);
 });
 
 var porc_igv = 0.18;
 
-$('select[name="orden_tipopagotext"]').on("change", function() {
+$('select[name="orden_tipopagotext"]').on("change", function () {
   valtipo = $(this).val();
   ordentipopago = $('input[name="orden_tipopago"]');
   div_tipopago = $('#div_diaspago');
-  if(valtipo != ""){    
-    if(valtipo == "Otro"){
+  if (valtipo != "") {
+    if (valtipo == "Otro") {
       ordentipopago.val("");
-      ordentipopago.prop("required",true);
+      ordentipopago.prop("required", true);
       div_tipopago.show();
     } else {
       ordentipopago.val(valtipo);
-      ordentipopago.prop("required",false);
+      ordentipopago.prop("required", false);
       div_tipopago.hide();
     }
   }
 });
 
-$.post("../../modules/compras/listar-compras.php", {orden_tipo:"COMPRA"}, function(data) {
+$.post("../../modules/compras/listar-compras.php", { orden_tipo: "COMPRA" }, function (data) {
   $('select[name="orden_listado"]').empty();
   $('select[name="orden_listado"]').select2({
     data: JSON.parse(data)
   });
 });
 
-$.post("../../modules/proveedores/listar-proveedores.php", function(data) {
+$.post("../../modules/proveedores/listar-proveedores.php", function (data) {
   $('select[name="orden_proveedor"]').empty();
   $('select[name="orden_proveedor"]').select2({
     data: JSON.parse(data)
@@ -56,7 +59,7 @@ $('input[name="orden_cotizacion"]').autocomplete({
 });
 */
 
-$('select[name="orden_listado"]').on("change", function() {
+$('select[name="orden_listado"]').on("change", function () {
   val_lstordens = $(this).val();
   if (val_lstordens != "" && val_lstordens != null) {
     $("#btn-select-orden").prop("disabled", false);
@@ -65,16 +68,16 @@ $('select[name="orden_listado"]').on("change", function() {
   }
 });
 
-$('select[name="orden_proveedor"]').on('change', function(){
+$('select[name="orden_proveedor"]').on('change', function () {
   provid = $(this).val();
-  if(provid != ""){
+  if (provid != "") {
     //$('input[name="orden_producto_val"]').val("");
     $('input[name="orden_porcdscto"]').val("0");
     $('input[name="orden_valordscto"]').val("0");
     $.post(
       "../../modules/proveedores/consultar-proveedor.php",
-      { FILTER:provid },
-      function(data) {
+      { FILTER: provid },
+      function (data) {
         var mydata = JSON.parse(data);
         $('input[name="orden_provruc"]').val(mydata[0]["NUMERO"]);
         $('input[name="orden_nomprov"]').val(mydata[0]["RAZ_SOC"]);
@@ -202,7 +205,7 @@ $('input[name="orden_cantidad"]').on("change", function() {
 
 
 var tbl_prodordcompra = $("#table-ord-compras").DataTable({
-  "language": {"url": "../../plugins/datatables/Spanish.json"}
+  "language": { "url": "../../plugins/datatables/Spanish.json" }
 });
 
 var total_temporal = 0;
@@ -211,15 +214,14 @@ var total_temporal = 0;
 
 var tbl_data = "";
 
-$("#btn-add-prodtporden").click(function(e) {
-
+$("#btn-add-prodtporden").click(function (e) {
   e.preventDefault();
-  
+
+  // Validación de los campos
   code = $('input[name="orden_codprod"]').val();
   description = $('input[name="orden_descprod"]').val();
-  gloss = $('input[name="orden_glosa"]').val();
   unit_value = $('select[name="orden_valunit"]').val();
-  
+
   if (unit_value == "") unit_value = "-";
 
   unit_price = parseFloat($('input[name="orden_precunit"]').val());
@@ -228,105 +230,119 @@ $("#btn-add-prodtporden").click(function(e) {
   discount_rate = parseFloat($('input[name="orden_porcdscto"]').val());
   discounted_total = parseFloat($('input[name="orden_valordscto"]').val());
 
-  if (code != "" && description != "" && gloss != "" && unit_price >= 0 && quantity > 0) {
-    $("#btn-add-prodtporden").prop("disabled", true);
-
-    tbl_prodordcompra
-      .rows(function(idx, data, node) {
-      })
-      .remove()
-      .draw();
-      
-      detail_index = tbl_prodordcompra.rows().count() + 1;
-
-      tbl_prodordcompra.rows
-      .add([
-        {
-          0: detail_index,
-          1: code,
-          2: description,
-          3: gloss,
-          4: unit_value,
-          5: unit_price,
-          6: quantity,
-          7: discount_rate,
-          8: discounted_total
-        }
-      ])
-      .draw();
-
-    tbl_data = tbl_prodordcompra
-      .rows()
-      .data()
-      .toArray();
-
-    total_compra =
-      $('input[name="orden_totcompra"]').val() != ""
-        ? $('input[name="orden_totcompra"]').val()
-        : 0;
-
-    total_compra_actual = parseFloat(total_compra);
-    total_compra_actual += discounted_total 
-    
-    igv = total_compra_actual * porc_igv;    
-    total_neto = total_compra_actual + igv;
-
-    total_temporal = total_neto;
-    
-    $('input[name="orden_codprod"]').val("");
-    $('input[name="orden_descprod"]').val("");
-    $('input[name="orden_glosa"]').val(""); 
-    $('input[name="orden_valunit"]').val("");
-    $('input[name="orden_precunit"]').val(0);
-    $('input[name="orden_cantidad"]').val(0);
-    $('input[name="orden_porcdscto"]').val(0);
-    $('input[name="orden_valordscto"]').val(0);
-    $('input[name="orden_valorigv"]').val(0);
-
-    $('input[name="orden_totcompra"]').val(total_compra_actual.toFixed(2));
-    $('input[name="orden_igv"]').val(igv.toFixed(2));
-    $('input[name="orden_totneto"]').val(total_neto.toFixed(2));
-
-    $.Notification.notify(
-      "success",
-      "bottom-right",
-      "Artículo añadido",
-      "El artículo fue agregado a la OC."
-    );
-
-    if (tbl_data.length > 0) {
-      $("#btn-save-orden").prop("disabled", false);
-      //porc_descuento = parseFloat(porc_desc) / 100;
-      //val_desc = new_total * porc_descuento;
-      //$('input[name="orden_valordscto"]').val(val_desc.toFixed(2));
-    } else {
-      $('input[name="orden_valordscto"]').val(0);
-      $('input[name="orden_porcdscto"]').val(0);
-      $('input[name="orden_igv"]').val(0);
-      $('input[name="orden_porcigv"]').val(0);
-      $("#btn-save-orden").prop("disabled", true);
-      total_temporal = 0;
-    }
-
-  } else {
+  // Validación de campos vacíos o incorrectos
+  if (code == "" || description == "") {
     $('input[name="orden_codprod"]').focus();
     $.Notification.notify(
       "error",
       "bottom-right",
       "Datos Faltantes de Artículo",
-      "Complete datos faltantes (Código, Descripcion, Glosa, Precio, Cantidad)"
+      "Complete datos faltantes (Código, Descripcion)"
     );
+    return; // Detiene la ejecución de la función si no se completan los campos
+  }
+  if (unit_price < 0) {
+    $.Notification.notify(
+      "error",
+      "bottom-right",
+      "Precio unitario no válido",
+      "El precio unitario no puede ser negativo."
+    );
+    return; // Detiene la ejecución si el precio es negativo
+  }
+  if (quantity < 0) {
+    $.Notification.notify(
+      "error",
+      "bottom-right",
+      "Cantidad no válida",
+      "La cantidad no puede ser negativa."
+    );
+    return; // Detiene la ejecución si la cantidad es negativa
+  }
+
+  $("#btn-add-prodtporden").prop("disabled", true);
+
+  tbl_prodordcompra
+    .rows(function (idx, data, node) {
+    })
+    .remove()
+    .draw();
+
+  detail_index = tbl_prodordcompra.rows().count() + 1;
+
+  tbl_prodordcompra.rows
+    .add([
+      {
+        0: detail_index,
+        1: code,
+        2: description,
+        3: unit_value,
+        4: unit_price,
+        5: quantity,
+        6: discount_rate,
+        7: discounted_total
+      }
+    ])
+    .draw();
+
+  tbl_data = tbl_prodordcompra
+    .rows()
+    .data()
+    .toArray();
+
+  total_compra =
+    $('input[name="orden_totcompra"]').val() != ""
+      ? $('input[name="orden_totcompra"]').val()
+      : 0;
+
+  total_compra_actual = parseFloat(total_compra);
+  total_compra_actual += discounted_total
+
+  igv = total_compra_actual * porc_igv;
+  total_neto = total_compra_actual + igv;
+
+  total_temporal = total_neto;
+
+  $('input[name="orden_codprod"]').val("");
+  $('input[name="orden_descprod"]').val("");
+  $('input[name="orden_valunit"]').val("");
+  $('input[name="orden_precunit"]').val(0);
+  $('input[name="orden_cantidad"]').val(0);
+  $('input[name="orden_porcdscto"]').val(0);
+  $('input[name="orden_valordscto"]').val(0);
+  $('input[name="orden_valorigv"]').val(0);
+
+  $('input[name="orden_totcompra"]').val(total_compra_actual.toFixed(2));
+  $('input[name="orden_igv"]').val(igv.toFixed(2));
+  $('input[name="orden_totneto"]').val(total_neto.toFixed(2));
+
+  $.Notification.notify(
+    "success",
+    "bottom-right",
+    "Artículo añadido",
+    "El artículo fue agregado a la OC."
+  );
+
+  if (tbl_data.length > 0) {
+    $("#btn-save-orden").prop("disabled", false);
+  } else {
+    $('input[name="orden_valordscto"]').val(0);
+    $('input[name="orden_porcdscto"]').val(0);
+    $('input[name="orden_igv"]').val(0);
+    $('input[name="orden_porcigv"]').val(0);
+    $("#btn-save-orden").prop("disabled", true);
+    total_temporal = 0;
   }
 });
 
-$("#table-ord-compras").on("dblclick", "tr", function() {
+$("#table-ord-compras").on("dblclick", "tr", function () {
   var data_row = tbl_prodordcompra.row(this).data();
 
   if (data_row == null) return;
 
   var row_id = data_row[0];
   var importe_prod = parseFloat(data_row[8]);
-  
+
   //var porc_igv = $('input[name="orden_porcigv"]').val();
   //porc_igv = porc_igv==""?0:parseFloat(porc_igv);
 
@@ -380,24 +396,24 @@ $("#table-ord-compras").on("dblclick", "tr", function() {
   }
 });
 
-$('input[name="orden_tipomoneda"]').on("change", function() {
+$('input[name="orden_tipomoneda"]').on("change", function () {
   $('input[name="orden_porcdscto"]').trigger("change");
 });
 
-$('input[name="orden_precunit"]').on("change", function() {
+$('input[name="orden_precunit"]').on("change", function () {
   $('input[name="orden_porcdscto"]').trigger("change");
 });
 
-$('input[name="orden_cantidad"]').on("change", function() {
+$('input[name="orden_cantidad"]').on("change", function () {
   $('input[name="orden_porcdscto"]').trigger("change");
   $("#btn-add-prodtporden").prop("disabled", false);
 });
 
-$('input[name="orden_porcdscto"]').on("change", function() {
+$('input[name="orden_porcdscto"]').on("change", function () {
   precioprod_temp = $('input[name="orden_precunit"]').val();
   cantidad_articulo = $('input[name="orden_cantidad"]').val();
   total_articulo = precioprod_temp * cantidad_articulo;
-  porc_desc = parseFloat($(this).val()==""?0:$(this).val()) / 100;
+  porc_desc = parseFloat($(this).val() == "" ? 0 : $(this).val()) / 100;
   val_desc = (total_articulo - (total_articulo * porc_desc)).toFixed(2);
   val_igv = (val_desc * porc_igv).toFixed(2);
 
@@ -416,7 +432,7 @@ $('input[name="orden_porcigv"]').on("change", function() {
 });
 */
 
-$("#btn-select-orden").click(function() {
+$("#btn-select-orden").click(function () {
   DATA_ID = $('select[name="orden_listado"]').val();
   if (DATA_ID != "" && DATA_ID != null) {
     Swal.fire({
@@ -428,8 +444,8 @@ $("#btn-select-orden").click(function() {
     });
     $.post(
       "../../modules/compras/consultar-compra.php",
-      { TIPO_ORDEN:"COMPRA", FILTER: DATA_ID, ESTADO: "ALL" },
-      function(data) {
+      { TIPO_ORDEN: "COMPRA", FILTER: DATA_ID, ESTADO: "ALL" },
+      function (data) {
         var data_json = JSON.parse(data);
         $('input[name="orden_nro"]').focus();
         $('input[name="orden_nro"]').val(data_json[0]["ORDNUMBER"]);
@@ -451,17 +467,17 @@ $("#btn-select-orden").click(function() {
         $('input[name="orden_fecentrega"]').val(data_json[0]["FECDEL"]);
         $('input[name="orden_nrocuenta"]').val(data_json[0]["ACCNUM"]);
 
-        $('select[name="orden_tipopagotext"]').val(data_json[0]["PAYDAYS"] );
+        $('select[name="orden_tipopagotext"]').val(data_json[0]["PAYDAYS"]);
         $('select[name="orden_tipopagotext"]').trigger("change");
 
-        if ($('select[name="orden_tipopagotext"]').val() == null){
+        if ($('select[name="orden_tipopagotext"]').val() == null) {
           $('select[name="orden_tipopagotext"]').val("Otro");
           $('select[name="orden_tipopagotext"]').trigger("change");
           $('#div_diaspago').show();
-          $('input[name="orden_tipopago"]').prop("required",true);
-          $('input[name="orden_tipopago"]').val(data_json[0]["PAYDAYS"] );
+          $('input[name="orden_tipopago"]').prop("required", true);
+          $('input[name="orden_tipopago"]').val(data_json[0]["PAYDAYS"]);
         }
-        
+
         $('input[name="orden_cotizacion"]').val(data_json[0]["COTIZ"]);
         $('input[name="orden_observ"]').val(data_json[0]["OBSERV"]);
         $('input[name="orden_solicitante"]').val(data_json[0]["REQUES"]);
@@ -473,11 +489,11 @@ $("#btn-select-orden").click(function() {
 
         total_temporal = parseFloat(data_json[0]["TOTCOMP"]);
         codigo_idorden = data_json[0]["IDORDEN"];
-        
+
         $.post(
           "../../modules/compras/consultar-detalle-compra.php",
           { IDORDEN: codigo_idorden },
-          function(data) {
+          function (data) {
 
             $('input[name="orden_codprod"]').val("");
             $('input[name="orden_valunit"]').val("");
@@ -500,12 +516,11 @@ $("#btn-select-orden").click(function() {
                     0: detaorden_json[i]["ROW_ID"],
                     1: detaorden_json[i]["CODE"],
                     2: detaorden_json[i]["DESCRIPTION"],
-                    3: detaorden_json[i]["GLOSS"],
-                    4: detaorden_json[i]["UNIT_VALUE"],
-                    5: (detaorden_json[i]["UNIT_PRICE"] * 1).toFixed(2),
-                    6: detaorden_json[i]["QUANTITY"],
-                    7: (detaorden_json[i]["DISCOUNT_RATE"] * 1).toFixed(2),
-                    8: (detaorden_json[i]["DISCOUNTED_TOTAL"] * 1).toFixed(2)
+                    3: detaorden_json[i]["UNIT_VALUE"],
+                    4: (detaorden_json[i]["UNIT_PRICE"] * 1).toFixed(2),
+                    5: detaorden_json[i]["QUANTITY"],
+                    6: (detaorden_json[i]["DISCOUNT_RATE"] * 1).toFixed(2),
+                    7: (detaorden_json[i]["DISCOUNTED_TOTAL"] * 1).toFixed(2)
                   }
                 ])
                 .draw();
@@ -517,7 +532,7 @@ $("#btn-select-orden").click(function() {
         $("#col-btn-save-orden").attr("class", "col-md-6");
         $("#col-btn-delete-orden").show("fast");
       }
-    ).then(function() {
+    ).then(function () {
       Swal.close();
     });
   }
@@ -532,99 +547,108 @@ $("#FRM_INSERT_DETA_ORDCOMPRA").submit(function (e) {
   var formElement = document.getElementById(idform);
 
   tbl_data = tbl_prodordcompra.rows().data().toArray();
+  if (tbl_data.length === 0) {
+    $.Notification.notify(
+      "error",
+      "bottom-right",
+      "No hay productos",
+      "No se han agregado productos a la orden de compra."
+    );
+    return; // Detiene el envío del formulario si no hay productos
+  }
 
   var formData_rec = new FormData(formElement);
-  formData_rec.append("orden_tipo","COMPRA");
+  formData_rec.append("orden_tipo", "COMPRA");
   formData_rec.append("orden_lstprods", JSON.stringify(tbl_data));
   var id_ordcompra = $('input[name="orden_id"]').val();
 
   $.ajax({
-      type: "POST",
-      url: url,
-      data: formData_rec,
-      contentType: false,
-      cache: false,
-      processData: false,
-      beforeSend: function () {
-          Swal.fire({
-              html: '<h4>Guardando información</h4>',
-              allowOutsideClick: false,
-              onBeforeOpen: () => {
-                  Swal.showLoading();
-              }
-          })
-      },
-      success: function (data) {
-          if (data == "ERROR") {
-            $.Notification.notify("error", "bottom-right", "Error de guardado", "No se pudo guardar datos de Compra");
-            Swal.close();
-          } else if (data == "OK_INSERT") {
-            $('input[name="orden_nro"]').focus();
-            form.find("input, textarea, select").val("");
+    type: "POST",
+    url: url,
+    data: formData_rec,
+    contentType: false,
+    cache: false,
+    processData: false,
+    beforeSend: function () {
+      Swal.fire({
+        html: '<h4>Guardando información</h4>',
+        allowOutsideClick: false,
+        onBeforeOpen: () => {
+          Swal.showLoading();
+        }
+      })
+    },
+    success: function (data) {
+      if (data == "ERROR") {
+        $.Notification.notify("error", "bottom-right", "Error de guardado", "No se pudo guardar datos de Compra");
+        Swal.close();
+      } else if (data == "OK_INSERT") {
+        $('input[name="orden_nro"]').focus();
+        form.find("input, textarea, select").val("");
 
-            $('select[name="orden_estado"]').val("Pendiente");
-            $('select[name="orden_estado"]').trigger("change");
+        $('select[name="orden_estado"]').val("Pendiente");
+        $('select[name="orden_estado"]').trigger("change");
 
-            $('select[name="orden_proveedor"]').trigger("change");
+        $('select[name="orden_proveedor"]').trigger("change");
 
-            $('select[name="orden_tipopagotext"]').trigger("change");
-            $('select[name="orden_tipopagotext"]').prop("disabled",false);
+        $('select[name="orden_tipopagotext"]').trigger("change");
+        $('select[name="orden_tipopagotext"]').prop("disabled", false);
 
-            $('#div_diaspago').hide();
-            $('input[name="orden_tipopago"]').prop("required",false);
+        $('#div_diaspago').hide();
+        $('input[name="orden_tipopago"]').prop("required", false);
 
-            $.Notification.notify("success", "bottom-right", "Compra guardada", "Datos almacenados");
-            tbl_prodordcompra.clear().draw();
+        $.Notification.notify("success", "bottom-right", "Compra guardada", "Datos almacenados");
+        tbl_prodordcompra.clear().draw();
 
-            Swal.close();
-            $("#btn-save-orden").prop("disabled", true);
-            $("#btn-add-prodtporden").prop("disabled", true);
+        Swal.close();
+        $("#btn-save-orden").prop("disabled", true);
+        $("#btn-add-prodtporden").prop("disabled", true);
 
-            $.post("../../modules/compras/listar-compras.php", {orden_tipo:"COMPRA"}, function(data) {
-              $('select[name="orden_listado"]').empty();
-              $('select[name="orden_listado"]').select2({
-                data: JSON.parse(data)
-              });
+        $.post("../../modules/compras/listar-compras.php", { orden_tipo: "COMPRA" }, function (data) {
+          $('select[name="orden_listado"]').empty();
+          $('select[name="orden_listado"]').select2({
+            data: JSON.parse(data)
+          });
+        });
+
+      } else if (data == "OK_UPDATE") {
+        if (id_ordcompra != "" && id_ordcompra != null) {
+          $('input[name="orden_nro"]').focus();
+          $('input[name="orden_id"]').val("");
+          $("#btn-save-orden font").html("Guardar orden de compra");
+          $("#btn-save-orden").prop("disabled", true);
+          $("#btn-add-prodtporden").prop("disabled", true);
+          $("#col-btn-save-orden").attr("class", "col-md-12");
+          $("#col-btn-delete-orden").hide();
+          form.find("input, textarea, select").val("");
+
+          $('select[name="orden_estado"]').val("Pendiente");
+          $('select[name="orden_estado"]').trigger("change");
+
+          $('select[name="orden_proveedor"]').trigger("change");
+
+          $('select[name="orden_tipopagotext"]').trigger("change");
+          $('select[name="orden_tipopagotext"]').prop("disabled", false);
+
+          $('#div_diaspago').hide();
+          $('input[name="orden_tipopago"]').prop("required", false);
+          tbl_prodordcompra.clear().draw();
+
+          $.post("../../modules/compras/listar-compras.php", { orden_tipo: "COMPRA" }, function (data) {
+            $('select[name="orden_listado"]').empty();
+            $('select[name="orden_listado"]').select2({
+              data: JSON.parse(data)
             });
-            
-          } else if (data == "OK_UPDATE") {
-              if (id_ordcompra != "" && id_ordcompra != null) {
-                $('input[name="orden_nro"]').focus();
-                $('input[name="orden_id"]').val("");
-                $("#btn-save-orden font").html("Guardar orden de compra");
-                $("#btn-save-orden").prop("disabled", true);
-                $("#btn-add-prodtporden").prop("disabled", true);
-                $("#col-btn-save-orden").attr("class", "col-md-12");
-                $("#col-btn-delete-orden").hide();
-                form.find("input, textarea, select").val("");
-
-                $('select[name="orden_estado"]').val("Pendiente");
-                $('select[name="orden_estado"]').trigger("change");
-
-                $('select[name="orden_proveedor"]').trigger("change");
-
-                $('select[name="orden_tipopagotext"]').trigger("change");
-                $('select[name="orden_tipopagotext"]').prop("disabled",false);
-
-                $('#div_diaspago').hide();
-                $('input[name="orden_tipopago"]').prop("required",false);
-                tbl_prodordcompra.clear().draw();
-
-                $.post("../../modules/compras/listar-compras.php", {orden_tipo:"COMPRA"}, function(data) {
-                  $('select[name="orden_listado"]').empty();
-                  $('select[name="orden_listado"]').select2({
-                    data: JSON.parse(data)
-                  });
-                });
-              }
-              $.Notification.notify("success", "bottom-right", "Compra actualizada", "Datos actualizados");
-              Swal.close();
-          }
+          });
+        }
+        $.Notification.notify("success", "bottom-right", "Compra actualizada", "Datos actualizados");
+        Swal.close();
       }
+    }
   });
 });
 
-$("#btn-delete-orden").click(function() {
+$("#btn-delete-orden").click(function () {
   element = $(this);
   id_val = element.attr("js-id");
   if (id_val != "" && id_val != null) {
@@ -640,7 +664,7 @@ $("#btn-delete-orden").click(function() {
         $.post(
           "../../modules/compras/eliminar-compra.php",
           { ID_ORDER: id_val },
-          function(data) {
+          function (data) {
             if (data == true) {
               $('input[name="orden_nro"]').focus();
               tbl_prodordcompra.clear().draw();
@@ -648,9 +672,9 @@ $("#btn-delete-orden").click(function() {
                 .find("input, textarea, select")
                 .val("");
 
-              $('select[name="orden_proveedor"]').trigger("change");     
-              
-              $.post("../../modules/compras/listar-compras.php", {orden_tipo:"COMPRA"}, function(data) {
+              $('select[name="orden_proveedor"]').trigger("change");
+
+              $.post("../../modules/compras/listar-compras.php", { orden_tipo: "COMPRA" }, function (data) {
                 $('select[name="orden_listado"]').empty();
                 $('select[name="orden_listado"]').select2({
                   data: JSON.parse(data)
@@ -664,9 +688,9 @@ $("#btn-delete-orden").click(function() {
               $("#col-btn-save-orden").attr("class", "col-md-12");
               $("#col-btn-delete-orden").hide();
 
-              $('select[name="orden_tipopagotext"]').prop("disabled",false);
+              $('select[name="orden_tipopagotext"]').prop("disabled", false);
               $('#div_diaspago').hide();
-              $('input[name="orden_tipopago"]').prop("required",false);
+              $('input[name="orden_tipopago"]').prop("required", false);
 
               $.Notification.notify(
                 "success",
@@ -683,18 +707,18 @@ $("#btn-delete-orden").click(function() {
 });
 
 $("#btn-nuevacompra").click(function (e) {
-    e.preventDefault();
-    location.reload();
+  e.preventDefault();
+  location.reload();
 });
 
-$(document).ready(function() {
+$(document).ready(function () {
   var cookie_idorden = leer_cookie('COOKIE_ID_ORDEN');
   if (cookie_idorden != "") {
-    setTimeout(function(){
+    setTimeout(function () {
       $('select[name="orden_listado"]').val(cookie_idorden);
       $('select[name="orden_listado"]').trigger("change");
       $('#btn-select-orden').trigger("click");
       eliminar_cookie("COOKIE_ID_ORDEN");
-    },500);
+    }, 500);
   }
 });

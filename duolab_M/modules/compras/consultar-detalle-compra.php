@@ -18,7 +18,6 @@ if ($rowsNumber > 0) {
         $ROWDATA['ROW_ID'] = $CONT_R;
         $ROWDATA['CODE'] = $ROW["CODE"];
         $ROWDATA['DESCRIPTION'] = $ROW["DESCRIPTION"];
-        $ROWDATA['GLOSS'] = $ROW["GLOSS"];
         $ROWDATA['UNIT_VALUE'] = $ROW["UNIT_VALUE"];
         $ROWDATA['UNIT_PRICE'] = $ROW["UNIT_PRICE"];
         $ROWDATA['QUANTITY'] = $ROW["QUANTITY"];
