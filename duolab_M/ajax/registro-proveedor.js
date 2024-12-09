@@ -2,7 +2,7 @@ $("#col-btn-delete-proveedor").hide();
 
 $(document).ready(function(){
   $("#m_proveedores").attr("class","nav-link active");
-  $(document).prop('title', 'Proveedores - DuoLab Group');
+  $(document).prop('title', 'Proveedores - Casa Comercial Murillo');
 });
 
 $('select[name="proveedor_banco_1"], select[name="proveedor_banco_2"]').select2({
@@ -71,6 +71,88 @@ $("#FRM_INSERT_PROVEEDOR").submit(function (e) {
     var formElement = document.getElementById(idform);
     var formData_rec = new FormData(formElement);
     var id_cliente = $('input[name="proveedor_id"]').val();
+
+    //validaciones
+
+    var rtn = $('input[name="proveedor_numero"]').val();
+    if (rtn.length < 14 || rtn.length > 14){
+        $.Notification.notify("error", "bottom-right",
+         "RTN Incorrecto", "El RTN debe tener exactamente 14 caracteres");
+        return;
+      }
+        if (!/^\d{14}$/.test(rtn)) {
+            $.Notification.notify("error", "bottom-right",
+            "Número de RTN Incorrecto", "El número de RTN debe contener solo numeros.");
+            return;
+        }
+
+        var razonSocial = $('input[name="proveedor_razsoc"]').val();
+        if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/.test(razonSocial)) {
+            $.Notification.notify("error", "bottom-right",
+                "Razón Social Incorrecta", "La Razón Social debe contener solo letras, espacios y acentos.");
+            return;
+        }
+        
+
+      var pais = $('input[name="proveedor_pais"]').val();
+      if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/.test(pais)) {
+        $.Notification.notify("error", "bottom-right",
+            "Pais Incorrecto", "El pais debe contener solo letras.");
+        return;
+      }
+
+      var ciudad = $('input[name="proveedor_ciudad"]').val();
+      if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/.test(ciudad)) {
+        $.Notification.notify("error", "bottom-right",
+            "Ciudad Incorrecta", "La Ciudad debe contener solo letras.");
+        return;
+      }
+
+      var cont1 = $('input[name="proveedor_contnom_1"]').val();
+      if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/.test(cont1)) {
+        $.Notification.notify("error", "bottom-right",
+            "Nombre de Contacto 1 Incorrecto", "El nombre debe contener solo letras.");
+        return;
+      }
+
+      var cont2 = $('input[name="proveedor_contnom_2"]').val();
+      if (cont2 !== "" && !/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/.test(cont2)) {
+            $.Notification.notify("error", "bottom-right",
+            "Nombre de Contacto 2 Incorrecto", "El nombre debe contener solo letras.");
+        return;
+      }
+
+      var titc1 = $('input[name="proveedor_titularcta_1"]').val();
+      if (titc1 !== "" && !/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/.test(titc1)) {
+            $.Notification.notify("error", "bottom-right",
+            "Nombre de Titular 1 Incorrecto", "El nombre debe contener solo letras.");
+        return;
+      }
+      var titc2 = $('input[name="proveedor_titularcta_2"]').val();
+      if (titc2 !== "" && !/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/.test(titc2)) {
+            $.Notification.notify("error", "bottom-right",
+            "Nombre de Titular 2 Incorrecto", "El nombre debe contener solo letras.");
+        return;
+      }
+
+      var cct1 = $('input[name="proveedor_ctacorriente_1"]').val();
+      if (cct1 !=="" &&!/^\d{28}$/.test(cct1)) {
+        $.Notification.notify("error", "bottom-right",
+        "Número de Cta. Corriente 1 incorrecto", "El número de Cta. Corriente debe contener solo numeros.");
+        return;
+    }
+
+    var cct2 = $('input[name="proveedor_ctacorriente_2"]').val();
+    if (cct2 !== "" &&!/^\d{28}$/.test(cct2)) {
+        $.Notification.notify("error", "bottom-right",
+            "Número de Cta. Corriente 2 incorrecto", "El número de Cta. Corriente debe contener solo numeros.");
+            return;
+    }
+
+
+
+
+
     $.ajax({
         type: "POST",
         url: url,
