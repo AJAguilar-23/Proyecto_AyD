@@ -52,6 +52,60 @@ $("#btn-rpt-ventas-por-cliente").click(function (e) {
     var dateFrom = $('input[name="date_from"]').val();
     var dateTo = $('input[name="date_to"]').val();
 
+    //************************************************* */
+    // Fecha validacion //
+    if (dateFrom !="" && dateTo !="") {
+      
+   
+    // Convertir la fecha seleccionada a un formato comparable
+    var fechaSeleccionada = new Date(dateFrom);
+    var fechaMinima = new Date("2015-01-01");
+    
+    // Calcular la fecha máxima (que es la actual)
+    var fechaMaxima = new Date();
+    
+    // Validar que la fecha no sea anterior a 2015
+    if (fechaSeleccionada < fechaMinima) {
+        $.Notification.notify("error", "bottom-right",
+            "Fecha de Inicio Incorrecta", "La fecha no puede ser anterior al 2015.");
+        return;
+    }
+    
+    // Validar que la fecha no sea mayor a la fecha máxima permitida
+    if (fechaSeleccionada > fechaMaxima) {
+        $.Notification.notify("error", "bottom-right",
+            "Fecha Inicio Incorrecta", "La fecha no puede ser mayor que la fecha actual.");
+        return;
+    }
+    // Fecha validacion //
+    
+    // Convertir la fecha seleccionada a un formato comparable
+    var fechaSeleccionada2 = new Date(dateTo);
+        
+    // Validar que la fecha no sea anterior a 2015
+    if (fechaSeleccionada2 < fechaMinima) {
+        $.Notification.notify("error", "bottom-right",
+            "Fecha Final Incorrecta", "La fecha no puede ser anterior al 2015.");
+        return;
+    }
+    
+    // Validar que la fecha no sea mayor a la fecha máxima permitida
+    if (fechaSeleccionada2 > fechaMaxima) {
+        $.Notification.notify("error", "bottom-right",
+            "Fecha Final Incorrecta", "La fecha no puede ser mayor que la fecha actual.");
+        return;
+    }
+
+    if (fechaSeleccionada > fechaSeleccionada2){
+      $.Notification.notify("error", "bottom-right",
+          "Fecha Incorrecta", "La fecha de Inicio no puede ser mayor que la fecha Final.");
+      return;
+  }
+}
+      //************************************************* */
+
+  
+
     if (customerId == ""){
       $.Notification.notify("error", "bottom-right",
        "Cliente no seleccionado", "Seleccione un cliente para generar el reporte");
@@ -95,6 +149,34 @@ $("#btn-rpt-ventas-por-cliente2").click(function (e) {
     return;
   }
 
+      //************************************************* */
+    // Fecha validacion //
+      
+   
+      // Convertir la fecha seleccionada a un formato comparable
+      var fechaSeleccionada = new Date(dateFrom);
+      var fechaMinima = new Date("2015-01-01");
+      
+      // Calcular la fecha máxima (que es la actual)
+      var fechaMaxima = new Date();
+      
+      // Validar que la fecha no sea anterior a 2015
+      if (fechaSeleccionada < fechaMinima) {
+          $.Notification.notify("error", "bottom-right",
+              "Fecha del dia Incorrecta", "La fecha no puede ser anterior al 2015.");
+          return;
+      }
+      
+      // Validar que la fecha no sea mayor a la fecha máxima permitida
+      if (fechaSeleccionada > fechaMaxima) {
+          $.Notification.notify("error", "bottom-right",
+              "Fecha del dia Incorrecta", "La fecha no puede ser mayor que la fecha actual.");
+          return;
+      }
+      
+        //************************************************* */
+  
+
   var url="../../modules/reportes/ventas-por-cliente2.php?&datefrom=" + dateFrom;
   window.open(url);
 });
@@ -117,6 +199,58 @@ $("#btn-rpt-compras-por-semana").click(function (e) {
      "Fecha no seleccionado", "Seleccione una fecha Final para generar el reporte");
     return;
   }
+      //************************************************* */
+    // Fecha validacion //
+    if (dateFrom !="" && dateTo !="") {
+      
+   
+      // Convertir la fecha seleccionada a un formato comparable
+      var fechaSeleccionada = new Date(dateFrom);
+      var fechaMinima = new Date("2015-01-01");
+      
+      // Calcular la fecha máxima (que es la actual)
+      var fechaMaxima = new Date();
+      
+      // Validar que la fecha no sea anterior a 2015
+      if (fechaSeleccionada < fechaMinima) {
+          $.Notification.notify("error", "bottom-right",
+              "Fecha de Inicio Incorrecta", "La fecha no puede ser anterior al 2015.");
+          return;
+      }
+      
+      // Validar que la fecha no sea mayor a la fecha máxima permitida
+      if (fechaSeleccionada > fechaMaxima) {
+          $.Notification.notify("error", "bottom-right",
+              "Fecha Inicio Incorrecta", "La fecha no puede ser mayor que la fecha actual.");
+          return;
+      }
+      // Fecha validacion //
+      
+      // Convertir la fecha seleccionada a un formato comparable
+      var fechaSeleccionada2 = new Date(dateTo);
+          
+      // Validar que la fecha no sea anterior a 2015
+      if (fechaSeleccionada2 < fechaMinima) {
+          $.Notification.notify("error", "bottom-right",
+              "Fecha Final Incorrecta", "La fecha no puede ser anterior al 2015.");
+          return;
+      }
+      
+      // Validar que la fecha no sea mayor a la fecha máxima permitida
+      if (fechaSeleccionada2 > fechaMaxima) {
+          $.Notification.notify("error", "bottom-right",
+              "Fecha Final Incorrecta", "La fecha no puede ser mayor que la fecha actual.");
+          return;
+      }
+  
+      if (fechaSeleccionada > fechaSeleccionada2){
+        $.Notification.notify("error", "bottom-right",
+            "Fecha Incorrecta", "La fecha de Inicio no puede ser mayor que la fecha Final.");
+        return;
+    }
+  }
+        //************************************************* */
+  
 
   var url="../../modules/reportes/compra-por-semana.php?&datefrom=" + dateFrom + "&dateto=" + dateTo;
   window.open(url);
@@ -128,6 +262,61 @@ $("#btn-rpt-unidades-vendidas-cliente").click(function (e) {
   var productId=$('select[name="product_list"]').val();
   var dateFrom = $('input[name="date_from_uv"]').val();
   var dateTo = $('input[name="date_to_uv"]').val();
+  
+    //************************************************* */
+    // Fecha validacion //
+    if (dateFrom !="" && dateTo !="") {
+      
+   
+      // Convertir la fecha seleccionada a un formato comparable
+      var fechaSeleccionada = new Date(dateFrom);
+      var fechaMinima = new Date("2015-01-01");
+      
+      // Calcular la fecha máxima (que es la actual)
+      var fechaMaxima = new Date();
+      
+      // Validar que la fecha no sea anterior a 2015
+      if (fechaSeleccionada < fechaMinima) {
+          $.Notification.notify("error", "bottom-right",
+              "Fecha de Inicio Incorrecta", "La fecha no puede ser anterior al 2015.");
+          return;
+      }
+      
+      // Validar que la fecha no sea mayor a la fecha máxima permitida
+      if (fechaSeleccionada > fechaMaxima) {
+          $.Notification.notify("error", "bottom-right",
+              "Fecha Inicio Incorrecta", "La fecha no puede ser mayor que la fecha actual.");
+          return;
+      }
+      // Fecha validacion //
+      
+      // Convertir la fecha seleccionada a un formato comparable
+      var fechaSeleccionada2 = new Date(dateTo);
+          
+      // Validar que la fecha no sea anterior a 2015
+      if (fechaSeleccionada2 < fechaMinima) {
+          $.Notification.notify("error", "bottom-right",
+              "Fecha Final Incorrecta", "La fecha no puede ser anterior al 2015.");
+          return;
+      }
+      
+      // Validar que la fecha no sea mayor a la fecha máxima permitida
+      if (fechaSeleccionada2 > fechaMaxima) {
+          $.Notification.notify("error", "bottom-right",
+              "Fecha Final Incorrecta", "La fecha no puede ser mayor que la fecha actual.");
+          return;
+      }
+  
+      if (fechaSeleccionada > fechaSeleccionada2){
+        $.Notification.notify("error", "bottom-right",
+            "Fecha Incorrecta", "La fecha de Inicio no puede ser mayor que la fecha Final.");
+        return;
+    }
+  }
+        //************************************************* */
+  
+
+
   var url="../../modules/reportes/unidades-vendidas-por-cliente.php?productid=" + productId 
   + "&datefrom=" + dateFrom + "&dateto=" + dateTo;
   window.open(url);
