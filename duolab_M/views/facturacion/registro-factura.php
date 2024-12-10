@@ -140,7 +140,7 @@
                                         <label>Nombre</label>
                                         <input type="text" name="facturacion_valcliente" class="form-control" placeholder="Nombre de cliente" required>
                                     </div>
-                                    <!--<input type="hidden" name="facturacion_cliente">-->
+                                    <input type="hidden" name="facturacion_cliente">
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
