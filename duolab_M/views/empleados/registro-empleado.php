@@ -3,6 +3,8 @@
         background: #0001FA !important;
       }
  </style>
+
+
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -46,8 +48,8 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <label>Segundo Apellido</label>
-                                        <input type="text" class="form-control" placeholder="Ingrese apellido materno" name="empleado_apemat" required>
+                                        <label>Segundo  Apellido</label>
+                                        <input type="text" class="form-control" placeholder="Ingrese apellido materno" name="empleado_apemat" >
                                     </div>
                                 </div>
                             </div>
@@ -73,8 +75,8 @@
                                         <select class="form-control select2" style="width: 100%;" name="empleado_tipodoc" required>
                                             <option value="">Seleccione un tipo</option>
                                             <option value="DNI">DNI</option>
-                                            <option value="Carnet de Extranjería">Carnet de Extranjería</option>
-                                            <option value="Libreta Electoral">Libreta Electoral</option>
+                                            <option value="Carnet de Residente">Carnet de Residente</option>
+                                            <!--<option value="Libreta Electoral">Libreta Electoral</option>-->
                                         </select>
                                     </div>
                                 </div>
@@ -87,7 +89,8 @@
                                                     <i class="far fa-id-card"></i>
                                                 </span>
                                             </div>
-                                            <input type="text" class="form-control" placeholder="Ingrese número de Doc." name="empleado_numdoc" required>
+                                            <input type="text" class="form-control" placeholder="Ingrese número de Doc." name="empleado_numdoc" required
+                                            minlength="13" maxlength="13">
                                         </div>
                                         
                                     </div>
@@ -125,11 +128,20 @@
                                         <select class="form-control select2" style="width: 100%;" name="empleado_cargo" required>
                                             <option value="">Seleccione un cargo</option>
                                             <option value="Gerente General">Gerente General</option>
-                                            <option value="Gerente de Marketing">Gerente de Marketing</option>
-                                            <option value="Secretario">Secretario</option>
+                                            <option value="Gerente de Ventas">Gerente de Ventas</option>
+                                            <option value="Gerente de Compras">Gerente de Compras</option>
+                                            <option value="Jefe de Compras">Jefe de Compras</option>
+                                            <option value="Encargado de Inventarios">Encargado de Inventarios</option>
                                             <option value="Transportista">Transportista</option>
+                                            <option value="Cajero">Cajero</option>
+                                            <option value="Asesor de Ventas">Asesor de Ventas</option>
                                             <option value="Mantenimiento">Mantenimiento</option>
-                                            <option value="Visitador">Visitador</option>
+                                            <option value="Encargado de Logística">Encargado de Logística</option>
+                                            <option value="Auxiliar de Operaciones">Auxiliar Operaciones</option>
+                                            <option value="Personal de Seguridad">Personal de Seguridad</option>
+                                            <option value="Encargado de Soporte Técnico">Encargado de Soporte Técnico</option>
+                                            <option value="Jefe de Recursos Humanos">Jefe de Recursos Humanos</option>
+                                            <option value="Atención al Cliente">Atención al Cliente</option>
                                         </select>
                                     </div>
                                 </div>
@@ -157,7 +169,8 @@
                                                     <i class="fas fa-phone"></i>
                                                 </span>
                                             </div>
-                                            <input type="phone" class="form-control" pattern="[0-9--]{0,20}" placeholder="Ingrese teléfono" name="empleado_telefono">
+                                            <input type="phone" class="form-control" pattern="[0-9--]{0,20}" placeholder="Ingrese teléfono" name="empleado_telefono"
+                                            minlength="8" maxlength="8" required>
                                         </div>
                                         
                                     </div>
@@ -180,19 +193,19 @@
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label>Grado de Estudios</label>
-                                        <select class="form-control select2" style="width: 100%;" name="empleado_grado_est">
+                                        <select class="form-control select2" style="width: 100%;" name="empleado_grado_est" required>
                                             <option value="">Seleccione grado</option>
                                             <option value="Titulado">Titulado</option>
                                             <option value="Bachiller">Bachiller</option>
                                             <option value="Técnico">Técnico</option>
-                                            <option value="Actualmente cursando">Actualmente cursando</option>
+                                            <!--<option value="Actualmente cursando">Actualmente cursando</option>-->
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-md-9">
                                     <div class="form-group">
                                         <label>Carrera</label>
-                                        <input type="text" class="form-control" placeholder="Ingrese carrera" name="empleado_carrera">
+                                        <input type="text" class="form-control" placeholder="Ingrese carrera" name="empleado_carrera" required>
                                     </div>
                                 </div>
                             </div>
@@ -232,3 +245,27 @@
         </div>
     </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('select[name="empleado_tipodoc"]').on('change', function () {
+            var tipoDoc = $(this).val();
+            var numDocInput = $('input[name="empleado_numdoc"]');
+            
+            if (tipoDoc === "DNI") {
+                numDocInput.attr('minlength', '13').attr('maxlength', '13');
+            } else if (tipoDoc === "Carnet de Residente") {
+                numDocInput.attr('minlength', '15').attr('maxlength', '15');
+            } else {
+                numDocInput.attr('minlength', '13').attr('maxlength', '13'); // Opcional, por si no hay selección
+            }
+            
+            // Limpia el campo si cambia el tipo de documento
+            numDocInput.val('');
+        });
+        
+
+
+        
+    });
+</script>

@@ -53,6 +53,117 @@ $("#FRM_INSERT_EMPLEADO").submit(function (e) {
     var formElement = document.getElementById(idform);
     var formData_rec = new FormData(formElement);
     var id_empleado = $('input[name="empleado_id"]').val();
+
+    //si es dni
+    var tipoDoc = $('select[name="empleado_tipodoc"]').val();
+    var dni = $('input[name="empleado_numdoc"]').val();
+
+    if(tipoDoc == "DNI"){
+        if (dni.length < 13 || dni.length > 13){
+          $.Notification.notify("error", "bottom-right",
+           "DNI Incorrecto", "El DNI debe tener exactamente 13 caracteres");
+          return;
+        }
+        dni = $('input[name="empleado_numdoc"]').val().replace(/\s+/g, ''); // Eliminar espacios
+        if (!/^\d{13}$/.test(dni)) {
+          $.Notification.notify("error", "bottom-right",
+          "Número de DNI Incorrecto", "El número de DNI debe contener solo numeros.");
+          return;
+      }
+    }
+    //si es residente
+    if(tipoDoc == "Carnet de Residente"){
+        if (dni.length < 15 || dni.length > 15){
+          $.Notification.notify("error", "bottom-right",
+           "DNI Incorrecto", "El DNI debe tener exactamente 15 caracteres");
+          return;
+        }
+        if (!/^\d{15}$/.test(dni)) {
+          $.Notification.notify("error", "bottom-right",
+          "Número de DNI Incorrecto", "El número de DNI debe contener solo numeros.");
+          return;
+      }
+    }
+
+    // validacion fecha de nacimiento
+    var fechaNacimiento = $('input[name="empleado_fecnac"]').val(); // Obtener el valor del input
+
+    if (!fechaNacimiento) {
+        $.Notification.notify("error", "bottom-right",
+            "Fecha de Nacimiento Incorrecta", "La fecha de nacimiento es requerida.");
+        return;
+    }
+    
+    // Convertir la fecha seleccionada a un formato comparable
+    var fechaSeleccionada = new Date(fechaNacimiento);
+    var fechaMinima = new Date("1960-01-01");
+    
+    // Calcular la fecha máxima (15 años desde la fecha actual)
+    var fechaActual = new Date();
+    var fechaMaxima = new Date(fechaActual.getFullYear() - 18, fechaActual.getMonth(), fechaActual.getDate());
+    
+    // Validar que la fecha no sea anterior al 1 de enero de 1960
+    if (fechaSeleccionada < fechaMinima) {
+        $.Notification.notify("error", "bottom-right",
+            "Fecha de Nacimiento Incorrecta", "La fecha no puede ser anterior a 1960.");
+        return;
+    }
+    
+    // Validar que la fecha no sea mayor a la fecha máxima permitida
+    if (fechaSeleccionada > fechaMaxima) {
+        $.Notification.notify("error", "bottom-right",
+            "Fecha de Nacimiento Incorrecta", "La fecha no puede ser de los ultimos 18 años.");
+        return;
+    }
+
+
+    // Fecha de ingreso validacion //
+    var fechaIngreso = $('input[name="empleado_fecing"]').val(); // Obtener el valor del input
+
+    if (!fechaIngreso) {
+        $.Notification.notify("error", "bottom-right",
+            "Fecha de Ingreso Incorrecta", "La fecha de Ingreso es requerida.");
+        return;
+    }
+    
+    // Convertir la fecha seleccionada a un formato comparable
+    var fechaISeleccionada = new Date(fechaIngreso);
+    var fechaIMinima = new Date("2015-01-01");
+    
+    // Calcular la fecha máxima (que es la actual)
+    var fechaIMaxima = new Date();
+    
+    // Validar que la fecha no sea anterior a 2015
+    if (fechaISeleccionada < fechaIMinima) {
+        $.Notification.notify("error", "bottom-right",
+            "Fecha de Ingreso Incorrecta", "La fecha no puede ser anterior al 2015.");
+        return;
+    }
+    
+    // Validar que la fecha no sea mayor a la fecha máxima permitida
+    if (fechaISeleccionada > fechaIMaxima) {
+        $.Notification.notify("error", "bottom-right",
+            "Fecha de Ingreso Incorrecta", "La fecha no puede ser mayor que la fecha actual.");
+        return;
+    }
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     $.ajax({
         type: "POST",
         url: url,

@@ -477,23 +477,23 @@ $("#FRM_INSERT_COTIZACION").submit(function(e) {
   var id_cotizacion = $('input[name="id_cotizacion"]').val();
 
   var dni = $('input[name="cotizacion_cliruc"]').val();
-  if (dni.length < 13 || rtn.length > 13){
+  if (dni.length < 13 || dni.length > 13){
       $.Notification.notify("error", "bottom-right",
        "DNI Incorrecto", "El DNI debe tener exactamente 13 caracteres");
       return;
     }
-    if (!/^\d{14}$/.test(dni)) {
+    if (!/^\d{13}$/.test(dni)) {
       $.Notification.notify("error", "bottom-right",
       "Número de DNI Incorrecto", "El número de DNI debe contener solo numeros.");
       return;
   }
-  
+  /*
   var nombre = $('input[name="cotizacion_valcliente"]').val();
       if (nombre !== "" && !/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/.test(nombre)) {
             $.Notification.notify("error", "bottom-right",
-            "Nombre Incorrecto", "El nombre debe contener solo letras.");
+            "Nombre Incorrecto", "El nombre debe contener solo letras."); 
         return;
-            }
+            }*/
 
 
   $.ajax({

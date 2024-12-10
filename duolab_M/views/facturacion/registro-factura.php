@@ -113,7 +113,8 @@
                                         <div class="col-md-8">
                                             <div class="form-group">
                                                 <label>N° Factura</label>
-                                                <input type="text" class="form-control" placeholder="Correlativo de factura" name="facturacion_nro" required>
+                                                <input type="text" class="form-control" placeholder="Correlativo de factura" name="facturacion_nro" required
+                                                readonly="true">
                                             </div>
                                         </div>
                                     </div>
@@ -131,7 +132,7 @@
                                 <div class="col-md-2">
                                     <div class="form-group">
                                         <label>DNI</label>
-                                        <input type="text" maxlength="11" class="form-control" name="facturacion_cliruc" placeholder="DNI" required>
+                                        <input type="text" minlength="13" maxlength="13" class="form-control" name="facturacion_cliruc" placeholder="DNI" required>
                                     </div>
                                 </div>
                                 <div class="col-md-7">
@@ -139,7 +140,7 @@
                                         <label>Nombre</label>
                                         <input type="text" name="facturacion_valcliente" class="form-control" placeholder="Nombre de cliente" required>
                                     </div>
-                                    <input type="hidden" name="facturacion_cliente">
+                                    <!--<input type="hidden" name="facturacion_cliente">-->
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
@@ -150,7 +151,8 @@
                                                     <i class="far fa-calendar-alt"></i>
                                                 </span>
                                             </div>
-                                            <input type="date" class="form-control" placeholder="Fecha de cotización" name="facturacion_fecha" value="<?php echo date("Y-m-d"); ?>">
+                                            <input type="date" class="form-control" placeholder="Fecha de cotización" name="facturacion_fecha" value="<?php echo date("Y-m-d"); ?>"
+                                            readonly="true">
                                         </div>
                                     </div>
                                 </div>
@@ -190,7 +192,7 @@
                                         <input type="number" min="0" max="365" step="1" class="form-control" name="facturacion_formpago" placeholder="Número de días">
                                     </div>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-3 d-none" >
                                     <div class="form-group">
                                         <label>Fecha de Entrega</label>
                                         <div class="input-group mb-3">
@@ -239,7 +241,8 @@
 
                                 <div class="col-md-2">
                                     <label>Precio Unitario</label>
-                                    <input type="number" class="form-control" name="facturacion_prodprecio" value="0.00">
+                                    <input type="number" class="form-control" name="facturacion_prodprecio" value="0.00"
+                                    readonly="true">
                                 </div>
                                 <div class="col-md-2">
                                     <label>Cantidad</label>

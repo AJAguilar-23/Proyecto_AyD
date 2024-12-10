@@ -8,19 +8,19 @@ $(document).ready(function(){
 $('select[name="proveedor_banco_1"], select[name="proveedor_banco_2"]').select2({
     data: [
         { id:"", text:"Seleccione" },
-        { id:"BCP", text:"BCP" },
-        { id:"BBVA", text:"BBVA" },
-        { id:"INTERBANK", text:"INTERBANK" },
-        { id:"SCOTIABANK", text:"SCOTIABANK" },
-        { id:"BANBIF", text:"BANBIF" },
-        { id:"BN", text:"BANCO DE LA NACIÓN" },
+        { id:"Atlantida", text:"Banco Atlántida" },
+        { id:"FICOHSA", text:"Banco FICOHSA" },
+        { id:"Occidente", text:"Banco de Occidente" },
+        { id:"Lafise", text:"Banco Lafise" },
+        { id:"BAC", text:"BAC" },
+        { id:"Davivienda", text:"Banco Davivienda" },
     ]
 });
 
 $('select[name="proveedor_tipmoneda_1"], select[name="proveedor_tipmoneda_2"]').select2({
     data: [
         { id:"", text:"Seleccione" },
-        { id:"MN", text:"Moneda Nacional (PEN)" },
+        { id:"MN", text:"Moneda Nacional (HNL)" },
         { id:"ME", text:"Moneda Extranjera (USD)" }
     ]
 });
@@ -85,7 +85,7 @@ $("#FRM_INSERT_PROVEEDOR").submit(function (e) {
             "Número de RTN Incorrecto", "El número de RTN debe contener solo numeros.");
             return;
         }
-
+/*
         var razonSocial = $('input[name="proveedor_razsoc"]').val();
         if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/.test(razonSocial)) {
             $.Notification.notify("error", "bottom-right",
@@ -93,7 +93,7 @@ $("#FRM_INSERT_PROVEEDOR").submit(function (e) {
             return;
         }
         
-
+*/
       var pais = $('input[name="proveedor_pais"]').val();
       if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/.test(pais)) {
         $.Notification.notify("error", "bottom-right",
@@ -121,7 +121,7 @@ $("#FRM_INSERT_PROVEEDOR").submit(function (e) {
             "Nombre de Contacto 2 Incorrecto", "El nombre debe contener solo letras.");
         return;
       }
-
+/*
       var titc1 = $('input[name="proveedor_titularcta_1"]').val();
       if (titc1 !== "" && !/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/.test(titc1)) {
             $.Notification.notify("error", "bottom-right",
@@ -134,7 +134,7 @@ $("#FRM_INSERT_PROVEEDOR").submit(function (e) {
             "Nombre de Titular 2 Incorrecto", "El nombre debe contener solo letras.");
         return;
       }
-
+*/
       var cct1 = $('input[name="proveedor_ctacorriente_1"]').val();
       if (cct1 !=="" &&!/^\d{28}$/.test(cct1)) {
         $.Notification.notify("error", "bottom-right",
