@@ -2,7 +2,7 @@ $("#col-btn-delete-user").hide();
 
 $(document).ready(function(){
   $("#m_usuarios").attr("class","nav-link active");
-  $(document).prop('title', 'Usuarios - DuoLab Group');
+  $(document).prop('title', 'Usuarios - Casa Comercial Murillo');
 });
 
 var tabla_usuarios = $('#table-usuarios');

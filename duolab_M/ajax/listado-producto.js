@@ -2,7 +2,7 @@ $(document).ready(function(){
   $("#m_almacen").attr("class","nav-link active");
   $("#m_almacen").parent().attr("class","nav-item has-treeview menu-open");
   $("#m_listado_producto").attr("class","nav-link active");
-  $(document).prop('title', 'Listado de Productos - DuoLab Group');
+  $(document).prop('title', 'Listado de Productos -  Casa Comercial Murillo');
 });
 
 var tabla_productos = $('#table-productos');

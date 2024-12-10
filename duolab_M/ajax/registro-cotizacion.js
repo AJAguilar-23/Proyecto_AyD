@@ -10,8 +10,367 @@ $(document).ready(function(){
   $("#m_registro_cotizacion").attr("class","nav-link active");
   $("#m_cotizacion").attr("class","nav-link active");
   $("#m_cotizacion").parent().attr("class","nav-item has-treeview menu-open");
-  $(document).prop('title', 'Registro de Cotización - DuoLab Group');
+  $(document).prop('title', 'Registro de Cotización - Casa Comercial Murillo');
+
+
+  $('input[name="cotizacion_cliruc"]').on('input', function () {
+    var dni = $(this).val();
+    // Elimina cualquier letra o caracter no numérico
+    if (!/^[0-9]{0,13}$/.test(dni)) {
+        $(this).val(dni.slice(0, -1)); // Elimina el último carácter ingresado si no es un número
+    }
 });
+
+});
+
+function validarDNI(dni) {
+  var regex = /^[0-9]{13}$/;
+  if (!regex.test(dni)) {
+      return false;
+  }
+  var codigoDepartamentoMunicipio = dni.substring(0, 4);
+  if (!validarCodigoDepartamentoMunicipio(codigoDepartamentoMunicipio)) {
+      return false;
+  }
+  var anioNacimiento = parseInt(dni.substring(4, 8));
+  if (!validarAnioNacimiento(anioNacimiento)) {
+      return false;
+  }
+  var identificadorUnico = dni.substring(8, 13);
+  if (identificadorUnico.length !== 5 || isNaN(identificadorUnico)) {
+      return false;
+  }
+  return true;
+}
+
+function validarCodigoDepartamentoMunicipio(codigo) {
+  var codigosValidos = [
+      // ATLÁNTIDA
+      "0101",
+      "0102",
+      "0103",
+      "0104",
+      "0105",
+      "0106",
+      "0107",
+      "0108",
+      // COLÓN
+      "0201",
+      "0202",
+      "0203",
+      "0204",
+      "0205",
+      "0206",
+      "0207",
+      "0208",
+      "0209",
+      "0210",
+      // COMAYAGUA
+      "0301",
+      "0302",
+      "0303",
+      "0304",
+      "0305",
+      "0306",
+      "0307",
+      "0308",
+      "0309",
+      "0310",
+      "0311",
+      "0312",
+      "0313",
+      "0314",
+      "0315",
+      "0316",
+      "0317",
+      "0318",
+      "0319",
+      "0320",
+      "0321",
+      // COPÁN
+      "0401",
+      "0402",
+      "0403",
+      "0404",
+      "0405",
+      "0406",
+      "0407",
+      "0408",
+      "0409",
+      "0410",
+      "0411",
+      "0412",
+      "0413",
+      "0414",
+      "0415",
+      "0416",
+      "0417",
+      "0418",
+      "0419",
+      "0420",
+      "0421",
+      "0422",
+      "0423",
+      // CORTÉS
+      "0501",
+      "0502",
+      "0503",
+      "0504",
+      "0505",
+      "0506",
+      "0507",
+      "0508",
+      "0509",
+      "0510",
+      "0511",
+      "0512",
+      // CHOLUTECA
+      "0601",
+      "0602",
+      "0603",
+      "0604",
+      "0605",
+      "0606",
+      "0607",
+      "0608",
+      "0609",
+      "0610",
+      "0611",
+      "0612",
+      "0613",
+      "0614",
+      "0615",
+      "0616",
+      // EL PARAÍSO
+      "0701",
+      "0702",
+      "0703",
+      "0704",
+      "0705",
+      "0706",
+      "0707",
+      "0708",
+      "0709",
+      "0710",
+      "0711",
+      "0712",
+      "0713",
+      "0714",
+      "0715",
+      "0716",
+      "0717",
+      "0718",
+      "0719",
+      // FRANCISCO MORAZÁN
+      "0801",
+      "0802",
+      "0803",
+      "0804",
+      "0805",
+      "0806",
+      "0807",
+      "0808",
+      "0809",
+      "0810",
+      "0811",
+      "0812",
+      "0813",
+      "0814",
+      "0815",
+      "0816",
+      "0817",
+      "0818",
+      "0819",
+      "0820",
+      "0821",
+      "0822",
+      "0823",
+      "0824",
+      "0825",
+      "0826",
+      "0827",
+      "0828",
+      // GRACIAS A DIOS
+      "0901",
+      "0902",
+      "0903",
+      "0904",
+      "0905",
+      "0906",
+      // INTIBUCÁ
+      "1001",
+      "1002",
+      "1003",
+      "1004",
+      "1005",
+      "1006",
+      "1007",
+      "1008",
+      "1009",
+      "1010",
+      "1011",
+      "1012",
+      "1013",
+      "1014",
+      "1015",
+      "1016",
+      "1017",
+      // ISLAS DE LA BAHÍA
+      "1101",
+      "1102",
+      "1103",
+      "1104",
+      // LA PAZ
+      "1201",
+      "1202",
+      "1203",
+      "1204",
+      "1205",
+      "1206",
+      "1207",
+      "1208",
+      "1209",
+      "1210",
+      "1211",
+      "1212",
+      "1213",
+      "1214",
+      "1215",
+      "1216",
+      "1217",
+      "1218",
+      "1219",
+      // LEMPIRA
+      "1301",
+      "1302",
+      "1303",
+      "1304",
+      "1305",
+      "1306",
+      "1307",
+      "1308",
+      "1309",
+      "1310",
+      "1311",
+      "1312",
+      "1313",
+      "1314",
+      "1315",
+      "1316",
+      "1317",
+      "1318",
+      "1319",
+      "1320",
+      "1321",
+      "1322",
+      "1323",
+      "1324",
+      "1325",
+      "1326",
+      "1327",
+      "1328",
+      // OCOTEPEQUE
+      "1401",
+      "1402",
+      "1403",
+      "1404",
+      "1405",
+      "1406",
+      "1407",
+      "1408",
+      "1409",
+      "1410",
+      "1411",
+      "1412",
+      "1413",
+      "1414",
+      "1415",
+      "1416",
+      // OLANCHO
+      "1501",
+      "1502",
+      "1503",
+      "1504",
+      "1505",
+      "1506",
+      "1507",
+      "1508",
+      "1509",
+      "1510",
+      "1511",
+      "1512",
+      "1513",
+      "1514",
+      "1515",
+      "1516",
+      "1517",
+      "1518",
+      "1519",
+      "1520",
+      "1521",
+      "1522",
+      "1523",
+      // SANTA BÁRBARA
+      "1601",
+      "1602",
+      "1603",
+      "1604",
+      "1605",
+      "1606",
+      "1607",
+      "1608",
+      "1609",
+      "1610",
+      "1611",
+      "1612",
+      "1613",
+      "1614",
+      "1615",
+      "1616",
+      "1617",
+      "1618",
+      "1619",
+      "1620",
+      "1621",
+      "1622",
+      "1623",
+      "1624",
+      "1625",
+      "1626",
+      "1627",
+      "1628",
+      // VALLE
+      "1701",
+      "1702",
+      "1703",
+      "1704",
+      "1705",
+      "1706",
+      "1707",
+      "1708",
+      "1709",
+      // YORO
+      "1801",
+      "1802",
+      "1803",
+      "1804",
+      "1805",
+      "1806",
+      "1807",
+      "1808",
+      "1809",
+      "1810",
+      "1811"
+  ];
+  return codigosValidos.includes(codigo);
+}
+
+function validarAnioNacimiento(anio) {
+  var anioActual = new Date().getFullYear();
+  return anio >= 1900 && anio <= anioActual;
+}
+
+
 
 $('select[name="cotizacion_formpagotext"]').on("change", function() {
   valtipo = $(this).val();
@@ -475,6 +834,17 @@ $("#FRM_INSERT_COTIZACION").submit(function(e) {
   var formData_rec = new FormData(formElement);
   formData_rec.append("cotiz_prods", JSON.stringify(tbl_data));
   var id_cotizacion = $('input[name="id_cotizacion"]').val();
+
+
+  var dni = $('input[name="cotizacion_cliruc"]').val(); // Suponiendo que el campo de DNI es "cliente_ruc"
+
+    // Validar DNI
+    if (!validarDNI(dni)) {
+        $.Notification.notify("error", "bottom-right",
+           "DNI inválido", "El DNI ingresado no cumple con el formato válido.");
+        return false; // Detener el envío del formulario si el DNI es inválido
+    }
+  /*
 
   var dni = $('input[name="cotizacion_cliruc"]').val();
   if (dni.length < 13 || dni.length > 13){

@@ -30,12 +30,13 @@ $("#FRM_INSERT_PRODUCTO").submit(function (e) {
          "Codigo Incorrecto", "El código debe tener exactamente 8 caracteres");
         return;
       }
+      /*
       var productoMarca = $('input[name="producto_marca"]').val();
       if (!/^[a-zA-Z]+$/.test(productoMarca)) {
         $.Notification.notify("error", "bottom-right",
             "Marca Incorrecta", "La marca debe contener solo letras.");
         return;
-      }
+      }*/
       var valorMedida = $('select[name="producto_unitvalue"]').val();
     if (valorMedida == ""){
         $.Notification.notify("error", "bottom-right",

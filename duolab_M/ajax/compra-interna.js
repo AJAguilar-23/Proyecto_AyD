@@ -9,7 +9,7 @@ $(document).ready(function () {
   $("#m_compras").attr("class", "nav-link active");
   $("#m_compras").parent().attr("class", "nav-item has-treeview menu-open");
   $("#m_compra_interna").attr("class", "nav-link active");
-  $(document).prop('title', 'Compra Interna - DuoLab Group');
+  $(document).prop('title', 'Compra Interna - Casa Comercial Murillo');
 
   var fechaActual = new Date().toISOString().split('T')[0]; // Ejemplo: 2024-12-08
   $('input[name="orden_fecemision"]').val(fechaActual).prop('readonly', true);

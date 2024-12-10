@@ -6,7 +6,7 @@ $(document).ready(function(){
   $("#m_compras").attr("class","nav-link active");
   $("#m_compras").parent().attr("class","nav-item has-treeview menu-open");
   $("#m_resumen_compra").attr("class","nav-link active");
-  $(document).prop('title', 'Resumen de Compras - DuoLab Group');
+  $(document).prop('title', 'Resumen de Compras - Casa Comercial Murillo');
 });
 
 var tbl_ordenes = $("#table-ordenes").DataTable({

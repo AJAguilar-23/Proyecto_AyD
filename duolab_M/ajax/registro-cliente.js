@@ -2,7 +2,7 @@ $("#col-btn-delete-client").hide();
 
 $(document).ready(function () {
     $("#m_clientes").attr("class", "nav-link active");
-    $(document).prop('title', 'Clientes - DuoLab Group');
+    $(document).prop('title', 'Clientes - Casa Comercial Murillo');
 
     // Asignar la fecha actual y hacer el campo de fecha solo lectura
     var fechaActual = new Date().toISOString().split('T')[0]; // Ejemplo: 2024-12-08
