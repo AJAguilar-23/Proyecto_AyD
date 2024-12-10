@@ -1,8 +1,8 @@
-$(document).ready(function(){
-  $("#m_almacen").attr("class","nav-link active");
-  $("#m_almacen").parent().attr("class","nav-item has-treeview menu-open");
-  $("#m_registro_producto").attr("class","nav-link active");
-  $(document).prop('title', 'Registro de Productos - Casa Comercial Murillo');
+$(document).ready(function () {
+    $("#m_almacen").attr("class", "nav-link active");
+    $("#m_almacen").parent().attr("class", "nav-item has-treeview menu-open");
+    $("#m_registro_producto").attr("class", "nav-link active");
+    $(document).prop('title', 'Registro de Productos - Casa Comercial Murillo');
 });
 
 $.post("../../modules/proveedores/listar-proveedores.php", function (data) {
@@ -25,24 +25,24 @@ $("#FRM_INSERT_PRODUCTO").submit(function (e) {
 
     //validaciones
     var codigoProducto = $('input[name="producto_code"]').val();
-    if (codigoProducto.length < 8 || codigoProducto.length > 8){
+    if (codigoProducto.length < 8 || codigoProducto.length > 8) {
         $.Notification.notify("error", "bottom-right",
-         "Codigo Incorrecto", "El código debe tener exactamente 8 caracteres");
+            "Codigo Incorrecto", "El código debe tener exactamente 8 caracteres");
         return;
-      }
-      /*
-      var productoMarca = $('input[name="producto_marca"]').val();
-      if (!/^[a-zA-Z]+$/.test(productoMarca)) {
+    }
+
+    var productoMarca = $('input[name="producto_marca"]').val();
+    if (!/^[a-zA-Z]+$/.test(productoMarca)) {
         $.Notification.notify("error", "bottom-right",
             "Marca Incorrecta", "La marca debe contener solo letras.");
         return;
-      }*/
-      var valorMedida = $('select[name="producto_unitvalue"]').val();
-    if (valorMedida == ""){
+    }
+    var valorMedida = $('select[name="producto_unitvalue"]').val();
+    if (valorMedida == "") {
         $.Notification.notify("error", "bottom-right",
-         "Unidad de medida no Seleccionada", "Por favor seleccione una unidad de medida");
+            "Unidad de medida no Seleccionada", "Por favor seleccione una unidad de medida");
         return;
-      }
+    }
 
 
     $.ajax({

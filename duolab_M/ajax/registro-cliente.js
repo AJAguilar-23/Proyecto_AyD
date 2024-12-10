@@ -18,7 +18,7 @@ $(document).ready(function () {
     // Validación del celular (solo números y entre 8 y 9 dígitos)
     $('input[name="cliente_telcel"]').on('input', function () {
         var celular = $(this).val();
-        if (!/^[0-9]{0,9}$/.test(celular)) {
+        if (!/^[0-9]{0,8}$/.test(celular)) {
             $(this).val(celular.slice(0, -1)); // Elimina caracteres no numéricos
         }
     });
@@ -45,7 +45,7 @@ $(document).ready(function () {
     // Validación del primer teléfono de contacto (solo números)
     $('input[name="cliente_celcont_1"]').on('input', function () {
         var celularCont1 = $(this).val();
-        if (!/^[0-9]{0,9}$/.test(celularCont1)) {
+        if (!/^[0-9]{0,8}$/.test(celularCont1)) {
             $(this).val(celularCont1.slice(0, -1)); // Elimina caracteres no numéricos
         }
     });
@@ -53,7 +53,7 @@ $(document).ready(function () {
     // Validación del segundo teléfono de contacto (solo números)
     $('input[name="cliente_celcont_2"]').on('input', function () {
         var celularCont2 = $(this).val();
-        if (!/^[0-9]{0,9}$/.test(celularCont2)) {
+        if (!/^[0-9]{0,8}$/.test(celularCont2)) {
             $(this).val(celularCont2.slice(0, -1)); // Elimina caracteres no numéricos
         }
     });
