@@ -147,7 +147,7 @@
                                         <!--
                                         <label>Distrito</label>-->
                                         <select class="form-control select2" style="width: 100%;" name="cliente_distrito" value="">
-                                            <option value="">Seleccione un distrito</option>
+                                            <option value="">Seleccione Un Municipio</option>
                                         </select>
                                     </div>
                                 </div> 

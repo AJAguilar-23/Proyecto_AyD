@@ -33,7 +33,7 @@ switch ($MODO_UBIGEO) {
         $DATA = array();
 
         if ($rowsNumber > 0) {
-            array_push($DATA, ["id"=>"","text"=>"Seleccione una provincia"]);
+            array_push($DATA, ["id"=>"","text"=>"Seleccione un Municipio"]);
             while ($LST = $sqlStatement->fetch()) {
                 $ID_PROV = $LST["id"];
                 $NOM_PROV = $LST["name"];
